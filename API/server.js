@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Controllers
+const moviesController = require("./controllers/movies_controller");
+app.use("/movies", moviesController);
+
 // Listen
 app.listen(9000, () => {
   console.log(`LIVE ON PORT: 9000`);
