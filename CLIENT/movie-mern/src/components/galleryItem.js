@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { MovieContext } from './movieContext';
 import '../index.css';
 
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
