@@ -11,8 +11,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Controllers
+
 // Listen
 app.listen(9000, () => {
   console.log(`LIVE ON PORT: 9000`);
 });
-
