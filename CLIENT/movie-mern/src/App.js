@@ -1,21 +1,34 @@
 import { useState, useEffect } from "react";
-import Gallery from "./components/gallery";
 
 function App() {
-  let [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/550?api_key=7b627fa55bf0652f8c45e9da6e8199d1&Title=%27`
-    )
-      .then((response) => response.json())
-      .then((data) => setSearch(data.title))
-      .catch((error) => console.error(error));
-  }, []);
+    if (query !== "") {
+      fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=7b627fa55bf0652f8c45e9da6e8199d1&query=${query}`
+      )
+        .then((response) => response.json())
+        .then((data) => setMovies(data.results));
+    }
+  }, [query]);
+
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
 
   return (
     <div>
-      <Gallery search={search} />
+      <label>
+        Search for a movie:
+        <input type="text" value={query} onChange={handleInputChange} />
+      </label>
+      <ul>
+        {movies.map((movie) => (
+          <li key={movie.id}>{movie.title}</li>
+        ))}
+      </ul>
     </div>
   );
 }
