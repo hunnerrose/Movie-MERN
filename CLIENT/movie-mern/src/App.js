@@ -14,13 +14,10 @@ function App() {
     if (query !== '') {
       fetch(`${API_URL}&query=${query}`)
         .then((response) => {
-          // console.log(response);
           return response.json();
         })
-
         .then((data) => {
           setMovies(data.results);
-          //   console.log(data);
         });
     }
   }, [query]);
