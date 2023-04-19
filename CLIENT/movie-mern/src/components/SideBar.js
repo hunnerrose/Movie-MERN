@@ -1,5 +1,19 @@
-import React from 'react';
+import "../index.css";
 
-export const SideBar = () => {
-  return <div className='side-bar'>Side Bar</div>;
-};
+export default function SideBar({ query, setQuery }) {
+  const handleInputChange = (event) => {
+    setQuery(event.target.value);
+  };
+
+  return (
+    <label className="sidebar">
+      Search for a movie:
+      <input
+        className="input"
+        type="text"
+        value={query}
+        onChange={handleInputChange}
+      />
+    </label>
+  );
+}
