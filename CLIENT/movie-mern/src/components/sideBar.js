@@ -6,8 +6,8 @@ export default function SideBar({ query, setQuery }) {
   };
 
   return (
-    <label className="sidebar">
-      Search for a movie:
+    <label>
+      Search
       <input
         className="input"
         type="text"
