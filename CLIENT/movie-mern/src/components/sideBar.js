@@ -7,7 +7,6 @@ import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
 import SearchBar from "./SearchBar";
 import "../index.css";
-import { FloatingLabel, Form, Row, Col } from "react-bootstrap";
 
 export default function SideBar({ query, setQuery }) {
   const [visibleCustomToolbar, setVisibleCustomToolbar] = useState(false);
