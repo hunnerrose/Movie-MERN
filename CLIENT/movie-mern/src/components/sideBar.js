@@ -1,5 +1,5 @@
-import '../index.css';
-import { FloatingLabel, Form, Row, Col } from 'react-bootstrap';
+import "../index.css";
+import { FloatingLabel, Form, Row, Col } from "react-bootstrap";
 
 export default function SideBar({ query, setQuery }) {
   const handleInputChange = (event) => {
@@ -16,19 +16,19 @@ export default function SideBar({ query, setQuery }) {
     //     onChange={handleInputChange}
     //   />
     // </label>
-    <div className='sidebar'>
-      <Row className='g-2'>
+    <div className="sidebar">
+      <Row className="g-2">
         <Col md>
           <FloatingLabel
-            controlId='floatingInputGrid'
-            label='Search for a movie'
-            className='position-fixed'
+            controlId="floatingInputGrid"
+            label="Search for a movie"
+            className="position-fixed"
           >
             <Form.Control
-              type='text'
+              type="text"
               value={query}
               onChange={handleInputChange}
-              placeholder='The Batman'
+              placeholder="The Batman"
             />
           </FloatingLabel>
         </Col>
