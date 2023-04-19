@@ -1,3 +1,5 @@
+
+
 /* app */
 .appContainer {
   display: flex;
@@ -29,4 +31,51 @@
 .item {
   border: solid 3px red;
   margin: 1em;
+}
+
+/* navBar*/
+
+.logo {
+  width: 20%;
+  margin-top: 0%;
+}
+
+.navContainer {
+  top: 30%;
+  border-radius: 15px;
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-top: 20px;
+  padding: 5px;
+  overflow: hidden;
+  height: 90px;
+  background: linear-gradient(90deg, rgba(130,1,1,1) 0%, rgba(236,79,79,1) 0%, rgba(106,0,0,1) 100%);
+}
+
+.navUl {
+  list-style-type: none;
+  text-align: right;
+  position: relative;
+  bottom: 40px;
+}
+
+.navLi {
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  width: 10%;
+  display: inline-block;
+  margin: 5px;
+}
+
+.navA {
+  display: block;
+  font-weight: bold;
+  color: rgb(201, 201, 201);
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+} 
+
+.navA:hover {
+  color: rgb(168, 46, 46);
 }
