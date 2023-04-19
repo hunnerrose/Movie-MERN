@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 
+=======
+import { useState, useEffect } from "react";
+import { MovieContext } from "./components/movieContext";
+import SideBar from "./components/sideBar";
+import Gallery from "./components/gallery";
+>>>>>>> parent of 9d9f99a (added side bar)
 
 function App() {
   const [query, setQuery] = useState('');
@@ -19,21 +26,16 @@ function App() {
     }
   }, [query]);
 
-  //   <MovieContext.Provider value={{ movies }}>
-  //     <div className="appContainer">
-  //       <SideBar query={query} setQuery={setQuery} />
-  //       <Gallery />
-  //     </div>
-  // </MovieContext.Provider>
-  
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
-
   return (
     <MovieContext.Provider value={{ movies }}>
+<<<<<<< HEAD
+=======
+      <div className="appContainer">
+        <SideBar query={query} setQuery={setQuery} />
+        <Gallery />
+>>>>>>> parent of 9d9f99a (added side bar)
       </div>
-      </MovieContext.Provider>
+    </MovieContext.Provider>
   );
 }
 
