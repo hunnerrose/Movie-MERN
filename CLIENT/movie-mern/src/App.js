@@ -24,6 +24,8 @@ function App() {
     }
   }, [query]);
 
+  // fix prop drilling
+
   return (
     <div>
       <MovieContext.Provider value={{ movies }}>
