@@ -27,19 +27,15 @@ function App() {
   }, [query]);
 
   return (
-    // <MovieContext.Provider value={{ movies }}>
-    //   <div className="appContainer">
-    //     <SideBar query={query} setQuery={setQuery} />
-    //     <Gallery />
-    //   </div>
-    // </MovieContext.Provider>
+    
 
     <MovieContext.Provider value={{ movies }}>
+      
       <div>
-        
+        {/* SIDE BAR */}
       <SideNav
     onSelect={(selected) => {
-        // Add your code here
+       
     }}
 >
     <SideNav.Toggle />
@@ -48,8 +44,11 @@ function App() {
             <NavIcon>
                 <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
             </NavIcon>
-            <NavText>
+              <NavText>
+
+                {/* SEARCH BAR */}
                 <SideBar query={query} setQuery={setQuery} />
+
             </NavText>
         </NavItem>
         <NavItem eventKey="charts">
@@ -57,21 +56,23 @@ function App() {
                 <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
             </NavIcon>
             <NavText>
-                Charts
+                Movies
             </NavText>
-            <NavItem eventKey="charts/linechart">
+            <NavItem eventKey="charts/recentlyAdded">
                 <NavText>
-                    Line Chart
+                    Recently Added
                 </NavText>
             </NavItem>
-            <NavItem eventKey="charts/barchart">
+            <NavItem eventKey="charts/upcoming">
                 <NavText>
-                    Bar Chart
+                    Popular Movies
                 </NavText>
             </NavItem>
         </NavItem>
     </SideNav.Nav>
-        </SideNav>
+</SideNav>
+
+        {/* GALLERY */}
         <Gallery />
       </div>
       </MovieContext.Provider>
