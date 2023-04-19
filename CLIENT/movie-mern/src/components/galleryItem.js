@@ -10,6 +10,22 @@ export default function GalleryItem() {
   /* when a gallary item is clicked on the gallery should display a 
   full window view of the selected movie. the state should be managed here and sent to gallery.js
   */
+  const [isExpanded, setIsExpanded] = useState(false);
+
+    const handleClick = (e)  => {
+        setIsExpanded(!isExpanded);
+    };
+
+    // const simpleStyles = {I think we'd have to link this somehow to the gallertitems that we already have w their bootstrap styles OR put the bootstrap styling in this file}
+    // const expandedStyle = {Bootstrap Style}; 
+
+    // const simpleView = () => {
+    //     return (
+    //         <div onClick={handleClick} style={isExpanded ? expandedStyles : simpleStyles}>
+    //             <p> One Gallery item</p>
+    //         </div>
+    //     )
+    // }
 
   const dateOptions = {
     year: 'numeric',
