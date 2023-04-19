@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import { MovieContext } from "./movieContext";
-import "../index.css";
+import React, { useContext, useState } from 'react';
+import { MovieContext } from './movieContext';
+import '../index.css';
 
-import Card from "react-bootstrap/Card";
+import Card from 'react-bootstrap/Card';
 
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
@@ -13,10 +13,10 @@ export default function GalleryItem() {
   */
 
   const dateOptions = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
   };
 
   const expandedStyle = {
@@ -27,8 +27,8 @@ export default function GalleryItem() {
     //   // backgroundImage: https://image.tmdb.org/t/p/w154/${movie.poster_path},
     //   backgroundRepeat: "no-repeat",
     //   backgroundSize: "cover",
-    fontSize: "5rem",
-    color: "red",
+    fontSize: '5rem',
+    color: 'red',
   };
 
   // const expandedView = ({ movies }) => (
@@ -46,24 +46,24 @@ export default function GalleryItem() {
   );
 
   const card = (
-    <ul className="d-flex flex-row flex-wrap">
+    <ul className='d-flex flex-row flex-wrap'>
       {movies.map((movie) => (
         <Card
-          style={{ width: "18rem" }}
-          border="secondary"
+          style={{ width: '13rem' }}
+          border='secondary'
           key={movie.id}
-          className="m-2"
+          className='m-2'
         >
           <Card.Img
-            variant="top"
+            variant='top'
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt={movie.title}
           />
           <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
-            <Card.Subtitle className="text-muted mt-1">
+            <Card.Subtitle className='text-muted mt-1'>
               {new Date(movie.release_date).toLocaleDateString(
-                "en-US",
+                'en-US',
                 dateOptions
               )}
             </Card.Subtitle>

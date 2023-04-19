@@ -1,5 +1,5 @@
-import "../index.css";
-import GalleryItem from "./galleryItem";
+import '../index.css';
+import GalleryItem from './galleryItem';
 
 export default function Gallery({ movies }) {
   /* 
@@ -8,14 +8,10 @@ export default function Gallery({ movies }) {
   */
 
   return (
-    <div className="container">
-      <GalleryItem />
-
-      {/*poster ? (
-        <img src={`https://image.tmdb.org/t/p/w500/${poster}`} alt={search} />
-      ) : (
-        <p>No poster available</p>
-      )*/}
+    <div className='container-fluid'>
+      <div className='row'>
+        <GalleryItem />
+      </div>
     </div>
   );
 }
