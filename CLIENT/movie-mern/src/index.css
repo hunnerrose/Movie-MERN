@@ -1,12 +1,32 @@
-/* gallery.js */
+/* app */
+.appContainer {
+  display: flex;
+}
+
+/* sidebar */
+.sidebar {
+  margin: 10em 0 0 3em;
+}
+.input {
+  margin-left: 5px;
+}
+
+/* gallery */
 .container {
-  margin: 10em;
-  width: 50%;
-  height: 500px;
-  border: solid 5px orange;
+  margin: 10em 0 0 15em;
+  height: 350px;
+  /* border: solid 5px orange; */
   border-radius: 5px;
 }
-.image {
-  width: 200px;
-  height: 100px;
+
+/* galleryItem */
+.galleryItem {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+.item {
+  border: solid 3px red;
+  margin: 1em;
 }
