@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { MovieContext } from './components/movieContext';
 import SideBar from './components/sideBar';
 import Gallery from './components/gallery';
+import SideNav from './components/sideNav';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -25,7 +26,7 @@ function App() {
   return (
     <MovieContext.Provider value={{ movies }}>
       <div className='appContainer'>
-        <SideBar
+        <SideNav
           query={query}
           setQuery={setQuery}
         />
