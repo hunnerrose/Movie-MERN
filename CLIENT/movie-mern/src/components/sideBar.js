@@ -1,38 +1,29 @@
-import '../index.css';
-import { FloatingLabel, Form, Row, Col } from 'react-bootstrap';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+
+import React, { useState } from "react";
+import { Sidebar } from "primereact/sidebar";
+import { Button } from "primereact/button";
+import SearchBar from "./SearchBar";
 
 export default function SideBar({ query, setQuery }) {
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
+  const [visibleCustomToolbar, setVisibleCustomToolbar] = useState(false);
 
   return (
-    // <label className='sidebar'>
-    //   Search for a movie:
-    //   <input
-    //     className='input'
-    //     type='text'
-    //     value={query}
-    //     onChange={handleInputChange}
-    //   />
-    // </label>
-    <div className='sidebar'>
-      <Row className='g-2'>
-        <Col md>
-          <FloatingLabel
-            controlId='floatingInputGrid'
-            label='Search for a movie'
-            className='position-fixed'
-          >
-            <Form.Control
-              type='text'
-              value={query}
-              onChange={handleInputChange}
-              placeholder='The Batman'
-            />
-          </FloatingLabel>
-        </Col>
-      </Row>
+    <div>
+      <Sidebar
+        visible={visibleCustomToolbar}
+        onHide={() => setVisibleCustomToolbar(false)}
+      >
+        <h3 className="mb-3">SHMOVIE FANATICS</h3>
+        <SearchBar query={query} setQuery={setQuery} />
+      </Sidebar>
+      <Button
+        icon="pi pi-chevron-right"
+        onClick={() => setVisibleCustomToolbar(true)}
+        className="m-3 p-button-text"
+      />
     </div>
   );
 }

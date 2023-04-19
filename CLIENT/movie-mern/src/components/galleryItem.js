@@ -21,7 +21,7 @@ export default function GalleryItem() {
     <ul className="d-flex flex-row flex-wrap">
       {movies.map((movie) => (
         <Card
-          style={{ width: "18rem" }}
+          style={{ width: "13rem" }}
           border="secondary"
           key={movie.id}
           className="m-2"
