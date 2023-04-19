@@ -20,6 +20,7 @@ export default function SideBar({ query, setQuery }) {
         <SearchBar
           query={query}
           setQuery={setQuery}
+          
         />
       </Sidebar>
       <Button
