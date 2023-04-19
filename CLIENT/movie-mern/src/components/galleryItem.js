@@ -19,7 +19,7 @@ export default function GalleryItem() {
   };
 
   return (
-    <ul className='galleryItem'>
+    <ul className='d-flex flex-row flex-wrap'>
       {movies.map((movie) => (
         <Card
           border='secondary'
@@ -36,8 +36,8 @@ export default function GalleryItem() {
               )}
             </Card.Subtitle>
             <Card.Img
-              className='card-img mt-2'
-              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+              className='card-img mt-2 w-100'
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               alt={movie.title}
             />
           </Card.Body>
