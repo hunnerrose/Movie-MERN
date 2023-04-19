@@ -37,6 +37,7 @@ export default function GalleryItem() {
   //   </div>
   // );
 
+  // move to its in js file
   const ExpandedView = () => (
     <div className={expandedStyle}>
       <h3>{movies[0].title}</h3>
