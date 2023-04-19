@@ -1,6 +1,6 @@
 import SideNav, {
-  Toggle,
-  Nav,
+  // Toggle,
+  // Nav,
   NavItem,
   NavIcon,
   NavText,
@@ -8,7 +8,6 @@ import SideNav, {
 
 import SideBar from "./sideBar";
 
-// Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 
 function navBar({ query, setQuery }) {
