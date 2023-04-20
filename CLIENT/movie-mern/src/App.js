@@ -9,25 +9,21 @@ function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
 
-  const API_URL =
-    "https://api.themoviedb.org/3/search/movie?api_key=7b627fa55bf0652f8c45e9da6e8199d1";
-
+  // this api is set search for movie by name
+  const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`;
   useEffect(() => {
-    if (query !== "") {
-      fetch(`${API_URL}&query=${query}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setMovies(data.results);
-        });
-    }
-  }, [query]);
+    fetch(API_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data.results);
+      });
+  }, [API_URL]);
 
   return (
     <div>
       <MovieContext.Provider value={{ movies }}>
-        <SideBar query={query} setQuery={setQuery} />
+        <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
         <Gallery />
       </MovieContext.Provider>
     </div>
