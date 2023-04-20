@@ -15,12 +15,14 @@ export default function SideBar({ query, setQuery }) {
       <Sidebar
         visible={visibleCustomToolbar}
         onHide={() => setVisibleCustomToolbar(false)}
+        style={{
+          backgroundColor: '#243b55',
+        }}
       >
-        <h3 className='mb-3'>SHMOVIE FANATICS</h3>
+        <h3 className='mb-3 text-white'>SHMOVIE FANATICS</h3>
         <SearchBar
           query={query}
           setQuery={setQuery}
-          
         />
       </Sidebar>
       <Button
