@@ -84,7 +84,8 @@ export default function GalleryItem() {
           style={{ width: '18rem' }}
           border='secondary'
           key={movie.id}
-          className='mx-auto'
+          className='mx-auto m-2'
+          bg='dark'
         >
           <Card.Img
             variant='top'
@@ -92,7 +93,7 @@ export default function GalleryItem() {
             alt={movie.title}
           />
           <Card.Body>
-            <Card.Title>{movie.title}</Card.Title>
+            <Card.Title className='text-white'>{movie.title}</Card.Title>
             <Card.Subtitle className='text-muted mt-1'>
               {new Date(movie.release_date).toLocaleDateString(
                 'en-US',
