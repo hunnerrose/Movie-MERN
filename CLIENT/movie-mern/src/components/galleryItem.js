@@ -1,6 +1,8 @@
-import React, { useContext } from "react";
-import { MovieContext } from "./movieContext";
-import "../index.css";
+import React, { useContext } from 'react';
+import { MovieContext } from './movieContext';
+import '../index.css';
+
+import Card from 'react-bootstrap/Card';
 
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
@@ -9,20 +11,37 @@ export default function GalleryItem() {
   full window view of the selected movie. the state should be managed here and sent to gallery.js
   */
 
+  const dateOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  };
+
   return (
-    <ul className="galleryItem">
+    <ul className='d-flex flex-row flex-wrap'>
       {movies.map((movie) => (
-        <div key={movie.id} className="item">
-          <li>{movie.title}</li>
-          <li>{movie.release_date}</li>
-          <li>
-            <img
-              className="image"
-              src={`https://image.tmdb.org/t/p/w92/${movie.poster_path}`}
-              alt={movie.title}
-            />
-          </li>
-        </div>
+        <Card
+          style={{ width: '18rem' }}
+          border='secondary'
+          key={movie.id}
+          className='m-2'
+        >
+          <Card.Img
+            variant='top'
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={movie.title}
+          />
+          <Card.Body>
+            <Card.Title>{movie.title}</Card.Title>
+            <Card.Subtitle className='text-muted mt-1'>
+              {new Date(movie.release_date).toLocaleDateString(
+                'en-US',
+                dateOptions
+              )}
+            </Card.Subtitle>
+          </Card.Body>
+        </Card>
       ))}
     </ul>
   );
