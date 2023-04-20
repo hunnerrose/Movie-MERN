@@ -1,5 +1,5 @@
-import '../index.css';
-import { FloatingLabel, Form, Row, Col } from 'react-bootstrap';
+import "../index.css";
+import { FloatingLabel, Form, Row, Col } from "react-bootstrap";
 
 export default function SearchBar({ query, setQuery }) {
   const handleInputChange = (event) => {
@@ -8,16 +8,16 @@ export default function SearchBar({ query, setQuery }) {
 
   return (
     <div>
-      <Row className='g-2'>
+      <Row className="g-2">
         <Col md>
           <FloatingLabel
-            controlId='floatingInputGrid'
-            label='Search for a movie'
-            className='position-fixed'
-            style={{ width: '16rem' }}
+            controlId="floatingInputGrid"
+            label="Search for a movie"
+            className="position-fixed"
+            style={{ width: "16rem" }}
           >
             <Form.Control
-              type='text'
+              type="text"
               value={query}
               onChange={handleInputChange}
             />
