@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { MovieContext } from './components/movieContext';
 import { InputText } from 'primereact/inputtext';
 
-import Gallery from './components/Gallery';
+import Gallery from './components/gallery';
 import SideBar from './components/sideBar';
 
 function App() {
@@ -67,6 +67,7 @@ function App() {
                 value={query}
                 setQuery={setQuery}
                 onChange={(e) => setQuery(e.target.value)}
+                className='mb-2'
               />
               <label htmlFor='lefticon'>Search for a movie</label>
             </span>
