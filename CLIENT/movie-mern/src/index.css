@@ -26,3 +26,24 @@
   border: solid 3px red;
   margin: 1em;
 }
+
+/* movie-display */
+.movie-display {
+  min-height: 500px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* movie-content */
+.movie-content {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* movie-content-title */
+.movie-content-title {
+  color: lavenderblush;
+  font-size: 6em;
+}
