@@ -81,10 +81,10 @@ export default function GalleryItem() {
     <ul className='d-flex flex-row flex-wrap'>
       {movies.map((movie) => (
         <Card
-          style={{ width: '10rem' }}
+          style={{ width: '18rem' }}
           border='secondary'
           key={movie.id}
-          className='m-2'
+          className='mx-auto'
         >
           <Card.Img
             variant='top'
