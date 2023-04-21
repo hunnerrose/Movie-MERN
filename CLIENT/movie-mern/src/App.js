@@ -8,6 +8,8 @@ import Banner from "./components/banner";
 import Footer from "./components/footer";
 
 function App() {
+  // refactor code
+
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
@@ -26,21 +28,6 @@ function App() {
     const randomIndex = Math.floor(Math.random() * data.results.length);
     setSelectedMovie(data.results[randomIndex]);
   }
-
-  // async function fetchAMovie() {
-  //   const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
-  //   const data = await response.json();
-  //   setMovies(data.results);
-  //   setSelectedMovie(data.results[0]);
-  // }
-
-  // useEffect(() => {
-  //   if (query !== "") {
-  //     fetchAMovie();
-  //   } else {
-  //     fetchFeaturedMovies();
-  //   }
-  // }, [query]);
 
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
