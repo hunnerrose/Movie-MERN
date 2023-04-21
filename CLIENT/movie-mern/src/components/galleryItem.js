@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { MovieContext } from './movieContext';
 import '../index.css';
 
@@ -28,11 +29,14 @@ export default function GalleryItem() {
           className='mx-auto m-2'
           bg='dark'
         >
-          <Card.Img
-            variant='top'
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
-          />
+          <Link to={`/movies/${movie.id}`}>
+            <Card.Img
+              variant='top'
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+              className='cardImg'
+            />
+          </Link>
           <Card.Body>
             <Card.Title className='text-white'>{movie.title}</Card.Title>
             <Card.Subtitle className='text-muted mt-1'>

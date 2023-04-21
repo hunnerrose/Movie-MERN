@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 .App {
   background-color: #243b55;
@@ -66,4 +70,11 @@
 .logo {
   max-width: 250px;
   margin-bottom: 1em;
+}
+
+/* movie view */
+.movie-view-img {
+  width: 50%;
+  height: 300px;
+  object-fit: cover;
 }
