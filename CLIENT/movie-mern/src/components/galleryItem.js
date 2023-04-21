@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { MovieContext } from './movieContext';
 import '../index.css';
 
@@ -6,7 +6,6 @@ import Card from 'react-bootstrap/Card';
 
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   /* when a gallary item is clicked on the gallery should display a 
   full window view of the selected movie. the state should be managed here and sent to gallery.js

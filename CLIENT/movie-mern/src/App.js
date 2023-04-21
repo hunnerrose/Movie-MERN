@@ -60,14 +60,13 @@ function App() {
         >
           <div className='d-flex align-items-center justify-content-between'>
             <h3 className='text-white'>SHMOVIE FANATICS</h3>
-            <span className='p-float-label p-input-icon-left'>
+            <span className='p-float-label p-input-icon-left mb-3'>
               <i className='pi pi-search' />
               <InputText
                 id='lefticon'
                 value={query}
                 setQuery={setQuery}
                 onChange={(e) => setQuery(e.target.value)}
-                className='mb-2'
               />
               <label htmlFor='lefticon'>Search for a movie</label>
             </span>
