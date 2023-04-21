@@ -1,12 +1,16 @@
 import React, { useContext, useState } from "react";
 import { MovieContext } from "./movieContext";
 import "../index.css";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
+import MovieView from "./movieView";
 
 import Card from "react-bootstrap/Card";
 
-export default function GalleryItem({ setMovieClicked, setSelectedMovie }) {
+export default function GalleryItem({ setMovieClicked }) {
   const { movies } = useContext(MovieContext);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const [show, setShow] = useState(false);
 
