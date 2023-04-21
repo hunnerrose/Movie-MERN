@@ -74,7 +74,6 @@ function App() {
         </header>
 
         <div
-          id='movie-display'
           className='movie-display'
           style={{
             backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie.backdrop_path})`,
@@ -90,7 +89,7 @@ function App() {
               )}
             </p>
             <p className='text-white'>
-              <i className='pi pi-star text-warning m-1' />
+              <i className='pi pi-star text-warning' />
               {selectedMovie.vote_average}
             </p>
           </div>

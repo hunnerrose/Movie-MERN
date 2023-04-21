@@ -34,7 +34,7 @@
 
 /* movie-display */
 .movie-display {
-  min-height: 625px; 
+  min-height: 625px;
   background-position: top center;
   background-repeat: no-repeat;
   display: flex;
@@ -44,8 +44,8 @@
 
 /* movie-content */
 .movie-content {
-  max-width: 75%;
-  margin: 0 auto;
+  max-width: 63%;
+  margin: auto auto 0;
 }
 
 /* movie-content-title */
