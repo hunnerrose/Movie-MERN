@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
 import { MovieContext } from "./movieContext";
-import MovieView from "./movieView";
 import "../index.css";
+import { Modal, Button } from "react-bootstrap";
 
 import Card from "react-bootstrap/Card";
 
-export default function GalleryItem({ setMovieClicked }) {
+export default function GalleryItem({ setMovieClicked, setSelectedMovie }) {
   const { movies } = useContext(MovieContext);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const dateOptions = {
     year: "numeric",
@@ -41,6 +44,26 @@ export default function GalleryItem({ setMovieClicked }) {
                 dateOptions
               )}
             </Card.Subtitle>
+
+            <button
+              type="button"
+              className="btn btn-secondary mt-2"
+              onClick={handleShow}
+            >
+              View More
+            </button>
+
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>{movie.title}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <img
+                  src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              </Modal.Body>
+            </Modal>
           </Card.Body>
         </Card>
       ))}
