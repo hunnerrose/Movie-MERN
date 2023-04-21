@@ -1,19 +1,30 @@
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+
+import React, { useState } from "react";
+import { Sidebar } from "primereact/sidebar";
+import { Button } from "primereact/button";
+import SearchBar from "./SearchBar";
 import "../index.css";
 
 export default function SideBar({ query, setQuery }) {
-  const handleInputChange = (event) => {
-    setQuery(event.target.value);
-  };
+  const [visibleCustomToolbar, setVisibleCustomToolbar] = useState(false);
 
   return (
-    <label>
-      Search
-      <input
-        className="input"
-        type="text"
-        value={query}
-        onChange={handleInputChange}
+    <div>
+      <Sidebar
+        visible={visibleCustomToolbar}
+        onHide={() => setVisibleCustomToolbar(false)}
+      >
+        <h3 className="mb-3">SHMOVIE FANATICS</h3>
+        <SearchBar query={query} setQuery={setQuery} />
+      </Sidebar>
+      <Button
+        icon="pi pi-chevron-right"
+        onClick={() => setVisibleCustomToolbar(true)}
+        className="m-3 p-button-text"
       />
-    </label>
+    </div>
   );
 }

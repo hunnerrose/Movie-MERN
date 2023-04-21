@@ -1,11 +1,6 @@
-/* app */
-.appContainer {
-  display: flex;
-}
-
 /* sidebar */
 .sidebar {
-  margin: 10em 0 0 3em;
+  margin: auto auto;
 }
 .input {
   margin-left: 5px;
@@ -29,4 +24,25 @@
 .item {
   border: solid 3px red;
   margin: 1em;
+}
+
+/* movie-display */
+.movie-display {
+  min-height: 500px;
+  background-position: top center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* movie-content */
+.movie-content {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* movie-content-title */
+.movie-content-title {
+  color: lavenderblush;
+  font-size: 6em;
 }

@@ -1,48 +1,58 @@
-import React, { useContext } from 'react';
-import { MovieContext } from './movieContext';
-import '../index.css';
+import React, { useContext, useState } from "react";
+import { MovieContext } from "./movieContext";
+import MovieView from "./movieView";
+import "../index.css";
 
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 
-export default function GalleryItem() {
+export default function GalleryItem({ setMovieClicked }) {
   const { movies } = useContext(MovieContext);
-
-  /* when a gallary item is clicked on the gallery should display a 
-  full window view of the selected movie. the state should be managed here and sent to gallery.js
-  */
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const dateOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'UTC',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
   };
 
-  return (
-    <ul className='galleryItem'>
+  const card = (
+    <ul className="d-flex flex-row flex-wrap">
       {movies.map((movie) => (
         <Card
-          border='secondary'
-          style={{ width: '15rem' }}
+          style={{ width: "10rem" }}
+          border="secondary"
           key={movie.id}
-          className='m-2'
+          className="m-2"
+          onClick={() => setSelectedMovie(movie)} // set the clicked movie as the new state value
         >
+          <Card.Img
+            variant="top"
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            alt={movie.title}
+          />
           <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
-            <Card.Subtitle className='mt-2 text-muted'>
+            <Card.Subtitle className="text-muted mt-1">
               {new Date(movie.release_date).toLocaleDateString(
-                'en-US',
+                "en-US",
                 dateOptions
               )}
             </Card.Subtitle>
-            <Card.Img
-              className='card-img mt-2'
-              src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
-              alt={movie.title}
-            />
           </Card.Body>
         </Card>
       ))}
     </ul>
+  );
+
+  const handleClick = (movie) => {
+    setIsExpanded(!isExpanded);
+    setMovieClicked(true);
+  };
+  return (
+    <div onClick={handleClick}>
+      {isExpanded ? <MovieView movie={selectedMovie} /> : card}
+    </div>
   );
 }
