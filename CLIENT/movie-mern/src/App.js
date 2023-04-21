@@ -89,7 +89,7 @@ function App() {
               )}
             </p>
             <p className='text-white'>
-              <i className='pi pi-star text-warning' />
+              <i className='pi pi-star text-warning' />{' '}
               {selectedMovie.vote_average}
             </p>
           </div>
