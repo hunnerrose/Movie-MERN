@@ -5,6 +5,7 @@ import { InputText } from "primereact/inputtext";
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
 import Banner from "./components/banner";
+import Footer from "./components/footer";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -92,14 +93,7 @@ function App() {
           <Gallery setMovieClicked={setMovieClicked} />
         </div>
 
-        <div className="footer d-flex justify-content-center align-items-center">
-          <p className="text-white mx-2">
-            &copy; {new Date().getFullYear()} SHMOVIE FANATICS
-          </p>
-          <p className="text-white mx-2">
-            <i className="pi pi-github" />
-          </p>
-        </div>
+        <Footer />
       </MovieContext.Provider>
     </div>
   );
