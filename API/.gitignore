@@ -1,2 +1,5 @@
-/node_modules
+node_modules
 .env
+.sequelizerc
+.DS_Store
+
