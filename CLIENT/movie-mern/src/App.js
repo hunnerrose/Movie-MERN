@@ -8,6 +8,8 @@ import Banner from "./components/banner";
 import Footer from "./components/footer";
 
 function App() {
+  // refactor code
+
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
