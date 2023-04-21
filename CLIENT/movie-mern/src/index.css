@@ -1,3 +1,9 @@
+
+.App {
+  background-color: #243b55;
+}
+
+
 /* sidebar */
 .sidebar {
   margin: auto auto;
@@ -28,21 +34,29 @@
 
 /* movie-display */
 .movie-display {
-  min-height: 500px;
+  min-height: 625px;
   background-position: top center;
   background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
+  margin-bottom: 2em;
 }
 
 /* movie-content */
 .movie-content {
-  max-width: 80%;
-  margin: 0 auto;
+  max-width: 63%;
+  margin: auto auto 0;
 }
 
 /* movie-content-title */
 .movie-content-title {
   color: lavenderblush;
   font-size: 6em;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  color: white;
+  min-height: 40px;
 }
