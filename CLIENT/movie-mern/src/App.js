@@ -47,18 +47,23 @@ function App() {
   return (
     <div className="App">
       <MovieContext.Provider value={{ movies }}>
+        {/*SideBar*/}
         <SideBar query={query} setQuery={setQuery} />
 
+        {/*TopNav bar*/}
         <TopNav setQuery={setQuery} query={query} />
 
+        {/*Banner - displays Banner component until a movie is clicked.*/}
         {selectedMovie ? (
           <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
         ) : null}
 
+        {/*Gallery >> GalleryItem*/}
         <div id="gallery">
           <Gallery setMovieClicked={setMovieClicked} />
         </div>
 
+        {/*Footer*/}
         <Footer />
       </MovieContext.Provider>
     </div>
