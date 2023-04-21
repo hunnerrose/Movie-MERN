@@ -14,7 +14,7 @@ export default function SearchBar({ query, setQuery }) {
             controlId="floatingInputGrid"
             label="Search for a movie"
             className="position-fixed"
-            style={{ width: "16rem" }}
+            style={{ width: "17rem" }}
           >
             <Form.Control
               type="text"

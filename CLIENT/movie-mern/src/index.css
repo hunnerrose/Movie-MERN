@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+=======
+
+.App {
+  background-color: #243b55;
+}
+
+
+>>>>>>> 5b9cff3a1cb77e415469c453f46016b0227207d2
 /* sidebar */
 .sidebar {
   margin: auto auto;
@@ -28,16 +37,17 @@
 
 /* movie-display */
 .movie-display {
-  min-height: 500px;
+  min-height: 625px; 
   background-position: top center;
   background-repeat: no-repeat;
   display: flex;
   align-items: flex-end;
+  margin-bottom: 2em;
 }
 
 /* movie-content */
 .movie-content {
-  max-width: 80%;
+  max-width: 75%;
   margin: 0 auto;
 }
 

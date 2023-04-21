@@ -57,14 +57,14 @@ function App() {
   }, [query, fetchAMovie]);
 
   return (
-    <div>
+    <div className="App">
       <MovieContext.Provider value={{ movies }}>
         <SideBar query={query} setQuery={setQuery} />
 
         <header id="header" className="mb-2 mx-5">
           <div className="d-flex align-items-center justify-content-between">
-            <h4>SHMOVIE FANATICS</h4>
-            <span className="p-float-label p-input-icon-left">
+            <h3 className="text-white">SHMOVIE FANATICS</h3>
+            <span className="p-float-label p-input-icon-left mb-3">
               <i className="pi pi-search" />
               <InputText
                 id="lefticon"
