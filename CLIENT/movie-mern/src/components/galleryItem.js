@@ -1,15 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { MovieContext } from './movieContext';
 import '../index.css';
+import { Modal, Button } from 'react-bootstrap';
 
 import Card from 'react-bootstrap/Card';
 
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
 
-  /* when a gallary item is clicked on the gallery should display a 
-  full window view of the selected movie. the state should be managed here and sent to gallery.js
-  */
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   const dateOptions = {
     year: 'numeric',
@@ -41,6 +43,29 @@ export default function GalleryItem() {
                 dateOptions
               )}
             </Card.Subtitle>
+
+            <button
+              type='button'
+              className='btn btn-secondary mt-2'
+              onClick={handleShow}
+            >
+              View More
+            </button>
+
+            <Modal
+              show={show}
+              onHide={handleClose}
+            >
+              <Modal.Header closeButton>
+                <Modal.Title>{movie.title}</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <img
+                  src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              </Modal.Body>
+            </Modal>
           </Card.Body>
         </Card>
       ))}
