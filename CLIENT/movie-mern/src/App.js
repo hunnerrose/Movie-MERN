@@ -89,6 +89,10 @@ function App() {
                 dateOptions
               )}
             </p>
+            <p className='text-white'>
+              <i className='pi pi-star text-warning m-1' />
+              {selectedMovie.vote_average}
+            </p>
           </div>
         </div>
 
