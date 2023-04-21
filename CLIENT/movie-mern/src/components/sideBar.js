@@ -5,7 +5,7 @@ import "primeicons/primeicons.css";
 import React, { useState } from "react";
 import { Sidebar } from "primereact/sidebar";
 import { Button } from "primereact/button";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import "../index.css";
 import { InputText } from "primereact/inputtext";
 
@@ -22,7 +22,7 @@ export default function SideBar({ query, setQuery }) {
         }}
       >
         <h3 className="mb-3">SHMOVIE FANATICS</h3>
-        <SearchBar query={query} setQuery={setQuery} />
+        {/*<SearchBar query={query} setQuery={setQuery} />*/}
         <h3 className="mb-4 text-white">SHMOVIE FANATICS</h3>
         <span className="p-float-label p-input-icon-left">
           <i className="pi pi-search" />
