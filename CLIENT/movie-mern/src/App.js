@@ -98,6 +98,15 @@ function App() {
         <div id='gallery'>
           <Gallery />
         </div>
+
+        <div className='footer d-flex justify-content-center'>
+          <p className='text-white'>
+            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
+          </p>
+          <p className='text-white'>
+            <i className='pi pi-github' />
+          </p>
+        </div>
       </MovieContext.Provider>
     </div>
   );

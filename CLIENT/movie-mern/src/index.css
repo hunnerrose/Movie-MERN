@@ -53,3 +53,10 @@
   color: lavenderblush;
   font-size: 6em;
 }
+
+/* footer */
+.footer {
+  text-align: center;
+  color: white;
+  min-height: 40px;
+}
