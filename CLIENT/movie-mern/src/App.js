@@ -115,13 +115,14 @@ function App() {
         <div id='gallery'>
           <Gallery />
         </div>
-
-        <div className='footer d-flex justify-content-center'>
-          <p className='text-white'>
-            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
+        <div className='footer d-flex justify-content-center align-items-center'>
+          <p className='text-white mx-2'>
+            &copy; {new Date().getFullYear()} SHMOVIE FANATICS
           </p>
-          <p className='text-white'>
-            <i className='pi pi-github' />
+          <p className='text-white mx-2'>
+            <a href='https://github.com/hunnerrose/Movie-MERN'>
+              <i className='pi pi-github' />
+            </a>
           </p>
         </div>
       </MovieContext.Provider>
