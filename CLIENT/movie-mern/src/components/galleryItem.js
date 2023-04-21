@@ -26,6 +26,7 @@ export default function GalleryItem({ setMovieClicked }) {
           key={movie.id}
           className="mx-auto m-2"
           bg="dark"
+          onClick={() => setSelectedMovie(movie)} // set the clicked movie as the new state value
         >
           <Card.Img
             variant="top"
