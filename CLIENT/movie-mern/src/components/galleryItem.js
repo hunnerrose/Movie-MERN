@@ -21,11 +21,11 @@ export default function GalleryItem({ setMovieClicked }) {
     <ul className="d-flex flex-row flex-wrap">
       {movies.map((movie) => (
         <Card
-          style={{ width: "10rem" }}
+          style={{ width: "20rem" }}
           border="secondary"
           key={movie.id}
-          className="m-2"
-          onClick={() => setSelectedMovie(movie)} // set the clicked movie as the new state value
+          className="mx-auto m-2"
+          bg="dark"
         >
           <Card.Img
             variant="top"
