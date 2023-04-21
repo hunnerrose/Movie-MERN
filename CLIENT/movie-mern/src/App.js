@@ -4,23 +4,17 @@ import { InputText } from "primereact/inputtext";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
+import Banner from "./components/banner";
 
 function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
+  const [movieClicked, setMovieClicked] = useState(false);
 
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
-  const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
-
-  const dateOptions = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  };
 
   async function fetchFeaturedMovies() {
     const response = await fetch(
@@ -28,7 +22,8 @@ function App() {
     );
     const data = await response.json();
     setMovies(data.results);
-    setSelectedMovie(data.results[0]);
+    const randomIndex = Math.floor(Math.random() * data.results.length);
+    setSelectedMovie(data.results[randomIndex]);
   }
 
   // async function fetchAMovie() {
@@ -44,7 +39,7 @@ function App() {
   //   } else {
   //     fetchFeaturedMovies();
   //   }
-  // }, [query, fetchAMovie]);
+  // }, [query]);
 
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
@@ -82,27 +77,12 @@ function App() {
           </div>
         </header>
 
-        <div
-          id="movie-display"
-          className="movie-display"
-          style={{
-            backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie.backdrop_path})`,
-          }}
-        >
-          <div className="movie-content">
-            <h1 className="movie-content-title">{selectedMovie.title}</h1>
-            <p className="text-white">{selectedMovie.overview}</p>
-            <p className="text-white">
-              {new Date(selectedMovie.release_date).toLocaleDateString(
-                "en-US",
-                dateOptions
-              )}
-            </p>
-          </div>
-        </div>
+        {selectedMovie ? (
+          <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
+        ) : null}
 
         <div id="gallery">
-          <Gallery />
+          <Gallery setMovieClicked={setMovieClicked} />
         </div>
       </MovieContext.Provider>
     </div>

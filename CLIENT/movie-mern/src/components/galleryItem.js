@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { MovieContext } from "./movieContext";
-// import MovieView from "./movieView";
+import MovieView from "./movieView";
 import "../index.css";
 
 import Card from "react-bootstrap/Card";
 
-export default function GalleryItem() {
+export default function GalleryItem({ setMovieClicked }) {
   const { movies } = useContext(MovieContext);
-  // const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const dateOptions = {
@@ -17,11 +17,7 @@ export default function GalleryItem() {
     timeZone: "UTC",
   };
 
-  // const handleClick = () => {
-  //   setIsExpanded(!isExpanded);
-  //   console.log(isExpanded);
-  // };
-  return (
+  const card = (
     <ul className="d-flex flex-row flex-wrap">
       {movies.map((movie) => (
         <Card
@@ -48,5 +44,15 @@ export default function GalleryItem() {
         </Card>
       ))}
     </ul>
+  );
+
+  const handleClick = (movie) => {
+    setIsExpanded(!isExpanded);
+    setMovieClicked(true);
+  };
+  return (
+    <div onClick={handleClick}>
+      {isExpanded ? <MovieView movie={selectedMovie} /> : card}
+    </div>
   );
 }
