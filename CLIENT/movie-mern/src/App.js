@@ -68,6 +68,7 @@ export default function App() {
             setMovieClicked={setMovieClicked}
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
+            movies={movies}
           />
         </div>
 

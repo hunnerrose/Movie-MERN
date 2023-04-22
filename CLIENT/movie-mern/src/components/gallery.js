@@ -1,5 +1,5 @@
-import "../index.css";
 import GalleryItem from "./galleryItem";
+import "../index.css";
 
 export default function Gallery({
   setMovieClicked,
