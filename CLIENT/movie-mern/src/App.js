@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { MovieContext } from "./components/movieContext";
+import { MovieContext } from "./context/movieContext";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";

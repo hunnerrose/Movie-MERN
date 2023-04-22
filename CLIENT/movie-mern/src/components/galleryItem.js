@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Card, Modal } from "react-bootstrap";
-import { MovieContext } from "./movieContext";
+import { MovieContext } from "../context/movieContext";
 import "../index.css";
 import MovieView from "./movieView";
 
