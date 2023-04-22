@@ -1,15 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Card, Modal } from "react-bootstrap";
-import { MovieContext } from "../context/movieContext";
 import "../index.css";
 import MovieView from "./movieView";
 
 export default function GalleryItem({
+  movie,
   setMovieClicked,
   selectedMovie,
   setSelectedMovie,
 }) {
-  const { movies } = useContext(MovieContext);
   const [isExpanded, setIsExpanded] = useState(false);
   const [clickedMovie, setClickedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -37,9 +36,11 @@ export default function GalleryItem({
     timeZone: "UTC",
   };
 
-  const card = (
-    <ul className="d-flex flex-row flex-wrap">
-      {movies.map((movie) => (
+  return (
+    <div>
+      {isExpanded ? (
+        <MovieView movie={movie} />
+      ) : (
         <Card
           style={{ width: "20rem" }}
           border="secondary"
@@ -77,13 +78,7 @@ export default function GalleryItem({
             </button>
           </Card.Body>
         </Card>
-      ))}
-    </ul>
-  );
-
-  return (
-    <div>
-      {isExpanded ? <MovieView movie={selectedMovie} /> : card}
+      )}
 
       {clickedMovie && (
         <Modal show={showModal} onHide={handleCloseModal}>
