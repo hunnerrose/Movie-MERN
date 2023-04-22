@@ -52,7 +52,7 @@ export default function App() {
     <div className="App">
       <MovieContext.Provider value={{ movies }}>
         {/*SideBar*/}
-        <SideBar query={query} setQuery={setQuery} />
+        <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
 
         {/*TopNav bar*/}
         <TopNav setQuery={setQuery} query={query} />
