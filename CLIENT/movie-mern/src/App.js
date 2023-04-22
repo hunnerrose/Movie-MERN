@@ -6,17 +6,22 @@ import SideBar from "./components/sideBar";
 import Banner from "./components/banner";
 import Footer from "./components/footer";
 import TopNav from "./components/topNav";
+// require("dotenv").config();
 
 export default function App() {
+  // state variables
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
   const [movieClicked, setMovieClicked] = useState(false);
 
+  // api variables
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
+  // const API_KEY = process.env.REACT_APP_API_KEY;
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
 
+  // default movies display api
   async function fetchFeaturedMovies() {
     const response = await fetch(
       `${FEAT_API_URL}${API_KEY}&sort_by=popularity.desc`
@@ -27,6 +32,7 @@ export default function App() {
     setSelectedMovie(data.results[randomIndex]);
   }
 
+  // movies by search api
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
     const data = await response.json();
