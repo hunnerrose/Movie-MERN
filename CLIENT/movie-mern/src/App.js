@@ -7,9 +7,7 @@ import Banner from "./components/banner";
 import Footer from "./components/footer";
 import TopNav from "./components/topNav";
 
-function App() {
-  // refactor code
-
+export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
@@ -60,7 +58,11 @@ function App() {
 
         {/*Gallery >> GalleryItem*/}
         <div id="gallery">
-          <Gallery setMovieClicked={setMovieClicked} />
+          <Gallery
+            setMovieClicked={setMovieClicked}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+          />
         </div>
 
         {/*Footer*/}
@@ -69,5 +71,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
