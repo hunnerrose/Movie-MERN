@@ -1,17 +1,19 @@
-
-import "../index.css";
 import GalleryItem from "./galleryItem";
+import "../index.css";
 
-export default function Gallery({ movies }) {
-  /* 
-    if no item is clicked ? <GalleryItem /> : display full view of clicked item.
-    Here we will display more data, i.e., image, description, and genre.
-  */
-
+export default function Gallery({
+  setMovieClicked,
+  selectedMovie,
+  setSelectedMovie,
+}) {
   return (
     <div className="container-fluid">
       <div className="row">
-        <GalleryItem />
+        <GalleryItem
+          setMovieClicked={setMovieClicked}
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
       </div>
     </div>
   );

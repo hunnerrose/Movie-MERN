@@ -1,8 +1,6 @@
-
 .App {
   background-color: #243b55;
 }
-
 
 /* sidebar */
 .sidebar {
@@ -50,18 +48,6 @@
 
 /* movie-content-title */
 .movie-content-title {
-  color: aliceblue;
-  font-size: 6em;
-}
-
-/* footer */
-.footer {
-  text-align: center;
   color: white;
-  min-height: 40px;
-}
-
-.logo {
-  max-width: 250px;
-  margin-bottom: 1em;
+  font-size: 6em;
 }
