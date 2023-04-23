@@ -10,10 +10,10 @@ import TopNav from "./components/topNav";
 
 export default function App() {
   // state variables
-  const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState([]);
-  const [movieClicked, setMovieClicked] = useState(false);
+  const [query, setQuery] = useState(""); // handles search input
+  const [movies, setMovies] = useState([]); // handles galleryitem display
+  const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
+  const [movieClicked, setMovieClicked] = useState(false); // handles banner display on click
 
   // api variables
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
@@ -68,7 +68,6 @@ export default function App() {
             setMovieClicked={setMovieClicked}
             selectedMovie={selectedMovie}
             setSelectedMovie={setSelectedMovie}
-            movies={movies}
           />
         </div>
 

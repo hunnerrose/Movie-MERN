@@ -9,7 +9,7 @@ export default function GalleryItem({
   selectedMovie,
   setSelectedMovie,
 }) {
-  const { movies } = useContext(MovieContext);
+  const { movies } = useContext(MovieContext); // handles
   const [isExpanded, setIsExpanded] = useState(false);
   const [clickedMovie, setClickedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);

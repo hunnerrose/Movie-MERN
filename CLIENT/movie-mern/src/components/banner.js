@@ -9,7 +9,7 @@ export default function Banner({ selectedMovie, movieClicked }) {
   };
 
   return (
-    <>
+    <div>
       {movieClicked ? null : (
         <div
           className="movie-display"
@@ -33,6 +33,6 @@ export default function Banner({ selectedMovie, movieClicked }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
