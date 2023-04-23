@@ -1,6 +1,7 @@
 import "../index.css";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Comments from "./comments";
 
 export default function MovieView({ movie }) {
   return (
@@ -26,8 +27,10 @@ export default function MovieView({ movie }) {
         <Card.Body>
           {/*<Card.Link href="#">Trailer</Card.Link>*/}
           {/*<Card.Link href="#">Another Link</Card.Link>*/}
+      <Comments movie={movie} />
         </Card.Body>
       </Card>
+
     </div>
   );
 }
