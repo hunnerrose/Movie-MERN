@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
-import { MovieContext } from './components/movieContext';
-import { InputText } from 'primereact/inputtext';
+import { useState, useEffect, useCallback } from "react";
+import { MovieContext } from "./components/movieContext";
+import { InputText } from "primereact/inputtext";
 
-import Gallery from './components/gallery';
-import SideBar from './components/sideBar';
+import Gallery from "./components/gallery";
+import SideBar from "./components/sideBar";
 
 function App() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState([]);
 
-  const API_URL = 'https://api.themoviedb.org/3/search/movie?api_key=';
-  const FEAT_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=';
-  const API_KEY = '7b627fa55bf0652f8c45e9da6e8199d1';
-  const BACKDROP_IMG_PATH = 'https://image.tmdb.org/t/p/w1280/';
+  const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
+  const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
+  const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
+  const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
   const dateOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-    timeZone: 'UTC',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
   };
 
   async function fetchFeaturedMovies() {
@@ -31,80 +31,79 @@ function App() {
     setSelectedMovie(data.results[0]);
   }
 
-  async function fetchAMovie() {
+  const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
     const data = await response.json();
     setMovies(data.results);
     setSelectedMovie(data.results[0]);
-  }
+  }, [query]);
 
   useEffect(() => {
-    if (query !== '') {
+    if (query !== "") {
       fetchAMovie();
     } else {
       fetchFeaturedMovies();
     }
-  }, [query]);
+  }, [query, fetchAMovie]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <MovieContext.Provider value={{ movies }}>
         <SideBar
           query={query}
           setQuery={setQuery}
+          movies={movies}
+          setMovies={setMovies}
         />
 
-        <header
-          id='header'
-          className='mb-2 mx-5'
-        >
-          <div className='d-flex align-items-center justify-content-between'>
-            <h3 className='text-white'>SHMOVIE FANATICS</h3>
-            <span className='p-float-label p-input-icon-left mb-3'>
-              <i className='pi pi-search' />
+        <header id="header" className="mb-2 mx-5">
+          <div className="d-flex align-items-center justify-content-between">
+            <h3 className="text-white">SHMOVIE FANATICS</h3>
+            <span className="p-float-label p-input-icon-left mb-3">
+              <i className="pi pi-search" />
               <InputText
-                id='lefticon'
+                id="lefticon"
                 value={query}
                 setQuery={setQuery}
                 onChange={(e) => setQuery(e.target.value)}
               />
-              <label htmlFor='lefticon'>Search for a movie</label>
+              <label htmlFor="lefticon">Search for a movie</label>
             </span>
           </div>
         </header>
 
         <div
-          className='movie-display'
+          className="movie-display"
           style={{
             backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie.backdrop_path})`,
           }}
         >
-          <div className='movie-content'>
-            <h1 className='movie-content-title'>{selectedMovie.title}</h1>
-            <p className='text-white'>{selectedMovie.overview}</p>
-            <p className='text-white'>
+          <div className="movie-content">
+            <h1 className="movie-content-title">{selectedMovie.title}</h1>
+            <p className="text-white">{selectedMovie.overview}</p>
+            <p className="text-white">
               {new Date(selectedMovie.release_date).toLocaleDateString(
-                'en-US',
+                "en-US",
                 dateOptions
               )}
             </p>
-            <p className='text-white'>
-              <i className='pi pi-star text-warning' />{' '}
+            <p className="text-white">
+              <i className="pi pi-star text-warning" />{" "}
               {selectedMovie.vote_average}
             </p>
           </div>
         </div>
 
-        <div id='gallery'>
+        <div id="gallery">
           <Gallery />
         </div>
 
-        <div className='footer d-flex justify-content-center'>
-          <p className='text-white'>
-            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
+        <div className="footer d-flex justify-content-center">
+          <p className="text-white">
+            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {""}
           </p>
-          <p className='text-white'>
-            <i className='pi pi-github' />
+          <p className="text-white">
+            <i className="pi pi-github" />
           </p>
         </div>
       </MovieContext.Provider>

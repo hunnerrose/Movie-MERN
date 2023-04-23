@@ -10,3 +10,5 @@ export default function Gallery({ setMovieClicked }) {
     </div>
   );
 }
+
+
