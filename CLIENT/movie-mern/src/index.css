@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 
 .App {
@@ -18,7 +15,7 @@
 }
 
 /* gallery */
-.container {
+.galleryContainer {
   margin: 8em 0 0 5em;
   height: 670px;
   /* border: solid 5px orange; */
@@ -73,8 +70,34 @@
 }
 
 /* movie view */
-.movie-view-img {
-  width: 50%;
-  height: 300px;
-  object-fit: cover;
+
+.movie-img {
+  border-radius: 10px;
+}
+
+.overview {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 8px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
