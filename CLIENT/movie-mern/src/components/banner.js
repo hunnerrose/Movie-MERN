@@ -9,10 +9,9 @@ export default function Banner({ selectedMovie, movieClicked }) {
   };
 
   return (
-    <>
+    <div>
       {movieClicked ? null : (
-        <div /* could make this a component and pass it into gallery/galleryItem - onclick remove */
-          id="movie-display"
+        <div
           className="movie-display"
           style={{
             backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie.backdrop_path})`,
@@ -27,9 +26,13 @@ export default function Banner({ selectedMovie, movieClicked }) {
                 dateOptions
               )}
             </p>
+            <p className="text-white">
+              <i className="pi pi-star text-warning" />{" "}
+              {selectedMovie.vote_average}
+            </p>
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

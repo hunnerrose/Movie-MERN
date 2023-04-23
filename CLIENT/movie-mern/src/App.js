@@ -1,36 +1,38 @@
 import { useState, useEffect, useCallback } from "react";
-import { MovieContext } from "./components/movieContext";
-import { InputText } from "primereact/inputtext";
+import { MovieContext } from "./context/movieContext";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
+import Banner from "./components/banner";
+import Footer from "./components/footer";
+import TopNav from "./components/topNav";
+// require("dotenv").config();
 
-function App() {
-  const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState([]);
+export default function App() {
+  // state variables
+  const [query, setQuery] = useState(""); // handles search input
+  const [movies, setMovies] = useState([]); // handles galleryitem display
+  const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
+  const [movieClicked, setMovieClicked] = useState(false); // handles banner display on click
 
+  // api variables
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
+  // const API_KEY = process.env.REACT_APP_API_KEY;
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
-  const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
-  const dateOptions = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  };
-
+  // default movies display api
   async function fetchFeaturedMovies() {
     const response = await fetch(
       `${FEAT_API_URL}${API_KEY}&sort_by=popularity.desc`
     );
     const data = await response.json();
     setMovies(data.results);
-    setSelectedMovie(data.results[0]);
+    const randomIndex = Math.floor(Math.random() * data.results.length);
+    setSelectedMovie(data.results[randomIndex]);
   }
 
+  // movies by search api
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
     const data = await response.json();
@@ -49,66 +51,29 @@ function App() {
   return (
     <div className="App">
       <MovieContext.Provider value={{ movies }}>
-        <SideBar
-          query={query}
-          setQuery={setQuery}
-          movies={movies}
-          setMovies={setMovies}
-        />
+        {/*SideBar*/}
+        <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
 
-        <header id="header" className="mb-2 mx-5">
-          <div className="d-flex align-items-center justify-content-between">
-            <h3 className="text-white">SHMOVIE FANATICS</h3>
-            <span className="p-float-label p-input-icon-left mb-3">
-              <i className="pi pi-search" />
-              <InputText
-                id="lefticon"
-                value={query}
-                setQuery={setQuery}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-              <label htmlFor="lefticon">Search for a movie</label>
-            </span>
-          </div>
-        </header>
+        {/*TopNav bar*/}
+        <TopNav setQuery={setQuery} query={query} />
 
-        <div
-          className="movie-display"
-          style={{
-            backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie.backdrop_path})`,
-          }}
-        >
-          <div className="movie-content">
-            <h1 className="movie-content-title">{selectedMovie.title}</h1>
-            <p className="text-white">{selectedMovie.overview}</p>
-            <p className="text-white">
-              {new Date(selectedMovie.release_date).toLocaleDateString(
-                "en-US",
-                dateOptions
-              )}
-            </p>
-            <p className="text-white">
-              <i className="pi pi-star text-warning" />{" "}
-              {selectedMovie.vote_average}
-            </p>
-          </div>
-        </div>
+        {/*Banner - displays Banner component until a movie is clicked.*/}
+        {selectedMovie ? (
+          <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
+        ) : null}
 
+        {/*Gallery >> GalleryItem*/}
         <div id="gallery">
-          <Gallery />
+          <Gallery
+            setMovieClicked={setMovieClicked}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+          />
         </div>
 
-        <div className="footer d-flex justify-content-center">
-          <p className="text-white">
-            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {""}
-          </p>
-          <p className="text-white">
-            <i className="pi pi-github" />
-          </p>
-        </div>
+        {/*Footer*/}
+        <Footer />
       </MovieContext.Provider>
     </div>
   );
 }
-
-export default App;
