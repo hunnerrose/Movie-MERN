@@ -10,6 +10,12 @@ function Comments() {
     setNewComment("");
   };
 
+  const handleDelete = (index) => {
+    const newComments = [...comments];
+    newComments.splice(index, 1);
+    setComments(newComments);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -22,7 +28,10 @@ function Comments() {
       </form>
       <ul>
         {comments.map((comment, index) => (
-          <li key={index}>{comment}</li>
+          <li key={index}>
+            {comment}
+            <button onClick={() => handleDelete(index)}>Delete Comment</button>
+          </li>
         ))}
       </ul>
     </div>
