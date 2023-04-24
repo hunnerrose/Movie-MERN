@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { MovieContext } from "./context/movieContext";
 
 import Gallery from "./components/gallery";
-import SideBar from "./components/sideBar";
+import SideBar from "./components/SideBar";
 import Banner from "./components/banner";
 import Footer from "./components/footer";
 import TopNav from "./components/topNav";
