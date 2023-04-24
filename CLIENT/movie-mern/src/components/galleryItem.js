@@ -9,25 +9,24 @@ export default function GalleryItem({
   selectedMovie,
   setSelectedMovie,
 }) {
-  const { movies } = useContext(MovieContext); // handles
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [clickedMovie, setClickedMovie] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const { movies } = useContext(MovieContext); // handles list of movies returned from api
+  const [isExpanded, setIsExpanded] = useState(false); // displays movieView component when set true / clicked
+  const [clickedMovie, setClickedMovie] = useState(null); //
+  const [showModal, setShowModal] = useState(false); // displays modal of clicked movie
 
   const handleShowModal = (movie) => {
     setClickedMovie(movie);
     setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setClickedMovie(null);
+    setShowModal(false);
   };
 
   const handleMovieClick = (movie) => {
     setIsExpanded(!isExpanded);
     setMovieClicked(true);
     setSelectedMovie(movie);
-  };
-
-  const handleCloseModal = () => {
-    setClickedMovie(null);
-    setShowModal(false);
   };
 
   const dateOptions = {
@@ -85,6 +84,8 @@ export default function GalleryItem({
     <div>
       {isExpanded ? <MovieView movie={selectedMovie} /> : card}
 
+      {/*if clickedMovie is true (not null) the the code after the && will be exectued.
+          the modal will render if clickMovie is true and shoModal is also true. */}
       {clickedMovie && (
         <Modal show={showModal} onHide={handleCloseModal}>
           <Modal.Header closeButton>

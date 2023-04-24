@@ -11,7 +11,7 @@ import TopNav from "./components/topNav";
 export default function App() {
   // state variables
   const [query, setQuery] = useState(""); // handles search input
-  const [movies, setMovies] = useState([]); // handles galleryitem display
+  const [movies, setMovies] = useState([]); // handles list of movies returned from api
   const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
   const [movieClicked, setMovieClicked] = useState(false); // handles banner display on click
 
