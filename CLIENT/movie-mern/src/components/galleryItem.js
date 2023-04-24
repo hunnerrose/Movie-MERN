@@ -35,40 +35,34 @@ export default function GalleryItem() {
   };
 
   return (
-    <ul className='d-flex flex-row flex-wrap'>
+    <ul class='list-unstyled d-flex flex-wrap justify-content-center align-items-stretch'>
       {movies.map((movie) => (
-        <Card
-          style={{ height: 'auto' }}
-          border='secondary'
-          key={movie?.id}
-          className='mx-auto my-2'
-          bg='dark'
-        >
-          <Card.Img
-            variant='top'
-            src={`https://image.tmdb.org/t/p/w400/${movie?.poster_path}`}
-            alt={movie?.title}
-            className='cardImg'
-          />
-
-          <Card.Body className='text-center'>
-            <Card.Title className='text-white'>{movie?.title}</Card.Title>
-            <Card.Subtitle className='text-secondary my-2'>
-              {new Date(movie?.release_date).toLocaleDateString(
-                'en-US',
-                dateOptions
-              )}
-            </Card.Subtitle>
-            <Link to={`/movies/${movie?.id}`}>
-              <button
-                className='hover:scale-110 duration-200 border text-white border-blue-500 mt-2 py-2 px-4 rounded-md'
-                onClick={HandleClick}
-              >
-                View More
-              </button>
-            </Link>
-          </Card.Body>
-        </Card>
+        <div class='col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-1'>
+          <div class='card bg-dark text-white border-secondary d-flex flex-column h-100'>
+            <img
+              class='card-img-top flex-grow-1'
+              src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+              alt={movie?.title}
+            />
+            <div class='card-body text-center'>
+              <h5 class='card-title text-white'>{movie?.title}</h5>
+              <p class='card-text text-secondary'>
+                {new Date(movie?.release_date).toLocaleDateString(
+                  'en-US',
+                  dateOptions
+                )}
+              </p>
+              <Link to={`/movies/${movie?.id}`}>
+                <button
+                  class='btn btn-outline-light mt-2'
+                  onClick={HandleClick}
+                >
+                  View More
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       ))}
     </ul>
   );

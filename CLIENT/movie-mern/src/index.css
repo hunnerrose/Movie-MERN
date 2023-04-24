@@ -110,3 +110,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* card styling */
+.card-img-top {
+  object-fit: cover;
+}
