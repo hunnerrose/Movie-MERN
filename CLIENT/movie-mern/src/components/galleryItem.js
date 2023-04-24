@@ -40,26 +40,26 @@ export default function GalleryItem() {
         <Card
           style={{ height: 'auto' }}
           border='secondary'
-          key={movie.id}
+          key={movie?.id}
           className='mx-auto my-2'
           bg='dark'
         >
           <Card.Img
             variant='top'
-            src={`https://image.tmdb.org/t/p/w400/${movie.poster_path}`}
-            alt={movie.title}
+            src={`https://image.tmdb.org/t/p/w400/${movie?.poster_path}`}
+            alt={movie?.title}
             className='cardImg'
           />
 
           <Card.Body className='text-center'>
-            <Card.Title className='text-white'>{movie.title}</Card.Title>
+            <Card.Title className='text-white'>{movie?.title}</Card.Title>
             <Card.Subtitle className='text-secondary my-2'>
-              {new Date(movie.release_date).toLocaleDateString(
+              {new Date(movie?.release_date).toLocaleDateString(
                 'en-US',
                 dateOptions
               )}
             </Card.Subtitle>
-            <Link to={`/movies/${movie.id}`}>
+            <Link to={`/movies/${movie?.id}`}>
               <button
                 className='hover:scale-110 duration-200 border text-white border-blue-500 mt-2 py-2 px-4 rounded-md'
                 onClick={HandleClick}
