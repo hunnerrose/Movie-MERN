@@ -1,17 +1,59 @@
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import '../index.css';
 
 import React, { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
-export default function SideBar({ query, setQuery }) {
+export default function SideBar({ query, setQuery, setMovies }) {
   const [visibleCustomToolbar, setVisibleCustomToolbar] = useState(false);
 
+  const API_KEY = `7b627fa55bf0652f8c45e9da6e8199d1`;
+
+  // popular api
+  const fetchPopularMovies = async () => {
+    const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setMovies(data.results);
+    setVisibleCustomToolbar(false);
+  };
+
+  // now playing api
+  const fetchNowPlayingMovies = async () => {
+    const API_URL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
+
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setMovies(data.results);
+    setVisibleCustomToolbar(false);
+  };
+
+  // upcoming api
+  const fetchUpcomingMovies = async () => {
+    const API_URL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setMovies(data.results);
+    setVisibleCustomToolbar(false);
+  };
+
+  // top rated api
+  const fetchTopRatedMovies = async () => {
+    const API_URL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
+
+    const response = await fetch(API_URL);
+    const data = await response.json();
+    setMovies(data.results);
+    setVisibleCustomToolbar(false);
+  };
+
   return (
-    <>
+    <div>
       <Sidebar
         visible={visibleCustomToolbar}
         onHide={() => setVisibleCustomToolbar(false)}
@@ -19,17 +61,12 @@ export default function SideBar({ query, setQuery }) {
           backgroundColor: '#243b55',
         }}
       >
-        <img
-          className='logo'
-          src='https://media-private.canva.com/ADwn8/MAFghEADwn8/1/s.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWF6QO3UH4PAAJ6Q%2F20230421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230421T002509Z&X-Amz-Expires=19894&X-Amz-Signature=0adc59afcf6a893d961af662ee59a6c76bdf645ab228b2e553dc019090ec2b75&X-Amz-SignedHeaders=host&response-expires=Fri%2C%2021%20Apr%202023%2005%3A56%3A43%20GMT'
-          alt='logo'
-        />
+        <h3 className='mb-4 text-white'>SHMOVIE FANATICS</h3>
         <span className='p-float-label p-input-icon-left'>
           <i className='pi pi-search' />
           <InputText
             id='lefticon'
             value={query}
-            setQuery={setQuery}
             onChange={(e) => setQuery(e.target.value)}
             style={{ width: '17.2rem' }}
           />
@@ -38,24 +75,28 @@ export default function SideBar({ query, setQuery }) {
         <Button
           className='mt-3'
           style={{ width: '17.2rem' }}
+          onClick={() => fetchPopularMovies()}
         >
           Popular Movies
         </Button>
         <Button
           className='mt-3'
           style={{ width: '17.2rem' }}
+          onClick={() => fetchNowPlayingMovies()}
         >
           Now Playing
         </Button>
         <Button
           className='mt-3'
           style={{ width: '17.2rem' }}
+          onClick={() => fetchUpcomingMovies()}
         >
           Upcoming
         </Button>
         <Button
           className='mt-3'
           style={{ width: '17.2rem' }}
+          onClick={() => fetchTopRatedMovies()}
         >
           Top Rated
         </Button>
@@ -65,6 +106,6 @@ export default function SideBar({ query, setQuery }) {
         onClick={() => setVisibleCustomToolbar(true)}
         className='m-3 p-button-text'
       />
-    </>
+    </div>
   );
 }

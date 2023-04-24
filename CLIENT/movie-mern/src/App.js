@@ -69,6 +69,7 @@ function App() {
                 <SideBar
                   query={query}
                   setQuery={setQuery}
+                  setMovies={setMovies}
                 />
 
                 <header
