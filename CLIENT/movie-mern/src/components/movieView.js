@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 
-export default function MovieView({ movies }) {
-  const [movieData, setMovieData] = useState([]);
-  const [movie, setMovie] = useState([]);
-  const { id, name } = useParams();
+export default function MovieView({ movie }) {
+  // const [movieData, setMovieData] = useState([]);
+  // const [movie, setMovie] = useState([]);
+  // const { id, name } = useParams();
 
   const dateOptions = {
     year: "numeric",
@@ -21,18 +21,18 @@ export default function MovieView({ movies }) {
     return rhours + "h " + rminutes + "m";
   };
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=7b627fa55bf0652f8c45e9da6e8199d1&language=en-US`
-    )
-      .then((response) => response.json())
-      .then((res) => {
-        console.log(res);
-        setMovieData(res.data);
-        setMovie(res);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(
+  //     `https://api.themoviedb.org/3/movie/${id}?api_key=7b627fa55bf0652f8c45e9da6e8199d1&language=en-US`
+  //   )
+  //     .then((response) => response.json())
+  //     .then((res) => {
+  //       console.log(res);
+  //       setMovieData(res.data);
+  //       setMovie(res);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, [id]);
 
   return (
     <div>
@@ -60,9 +60,7 @@ export default function MovieView({ movies }) {
         </div>
         <div className="row">
           <div className="col-lg-4">
-            {/* <!-- Movie content--> */}
             <div>
-              {/* <!-- Movie poster--> */}
               <div class="flex-container">
                 <figure className="mb-4 flex-child">
                   <img
@@ -77,7 +75,9 @@ export default function MovieView({ movies }) {
           <div className="col-lg-1"></div>
           <div className="col-lg-7">
             {/* Fernando, can you figure out how we can display the multiple genres for each movie? I kept getting errors when I put movie.genres, b/c the genres portion is an array of objects. */}
-            {/* <!-- Genres section--> */}
+
+            {/* Genres section */}
+
             <div className="card mb-4">
               <div className="card-header">Genres</div>
               <div className="card-body">
@@ -100,7 +100,7 @@ export default function MovieView({ movies }) {
                 </ul>
               </div>
             </div>
-            {/* <!-- Production Info Section--> */}
+            {/*  Production Info Section--> */}
             <div className="card mb-4">
               <div className="card-header">Production Info</div>
               <div className="card-body">
