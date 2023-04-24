@@ -10,9 +10,9 @@ export default function GalleryItem({
   setSelectedMovie,
 }) {
   const { movies } = useContext(MovieContext); // handles list of movies returned from api
-  const [isExpanded, setIsExpanded] = useState(false); // displays movieView component when set true / clicked
-  const [clickedMovie, setClickedMovie] = useState(null); //
-  const [showModal, setShowModal] = useState(false); // displays modal of clicked movie
+  const [isExpanded, setIsExpanded] = useState(false); // displays movieView component when set true/clicked
+  const [clickedMovie, setClickedMovie] = useState(null); // stores clicked movie to display in movieView
+  const [showModal, setShowModal] = useState(false); // displays modal
 
   const handleShowModal = (movie) => {
     setClickedMovie(movie);
