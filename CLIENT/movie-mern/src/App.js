@@ -76,59 +76,57 @@ function App() {
                   id='header'
                   className='mb-2 mx-5'
                 >
-                  <div className='d-flex align-items-center justify-content-between'>
+                  <div class='flex items-center justify-between'>
                     <a
                       href='/'
-                      className='text-decoration-none'
+                      className='text-white no-underline'
                     >
                       <h3 className='text-white'>SHMOVIE FANATICS</h3>
                     </a>
-                    <span className='p-float-label p-input-icon-left mb-3'>
-                      <i className='pi pi-search' />
-                      <InputText
-                        id='lefticon'
+                    <span>
+                      <input
+                        type='text'
                         value={query}
-                        setQuery={setQuery}
                         onChange={(e) => setQuery(e.target.value)}
+                        placeholder='Search...'
+                        className='w-48 h-12 rounded-full mr-5 mb-3 p-4 bg-transparent outline-none transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110 border-2 border-blue-500 focus:text-gray-400 focus:-translate-y-1 focus:scale-110 focus:border-blue-500 text-white'
                       />
-                      <label htmlFor='lefticon'>Search for a movie</label>
                     </span>
                   </div>
                 </header>
 
                 {/* Banner */}
-                <div className='w-full h-[550px] text-white mb-4'>
-                  <div className='w-full h-full'>
-                    {/* DIV BELOW IS IMAGE OVERLAY TINT */}
-                    <div className='absolute w-full h-[550px]  bg-gradient-to-b from-gray-900'></div>
-                    <img
-                      className='w-full h-full object-cover rounded-[20px]'
-                      src={`https://image.tmdb.org/t/p/original/${selectedMovie?.backdrop_path}`}
-                      alt={selectedMovie?.title}
-                    />
-                    <div className='absolute w-full top-[18%] p-4 md:p-8'>
-                      <h1
-                        className='text-3xl md:text-5xl font-bold bg-gradient-to-r bg-clip-text text-transparent 
-            from-teal-300 to-white'
-                      >
-                        {selectedMovie?.title}
-                      </h1>
-                      <p className='text-gray-300 text-lg my-2'>
-                        {new Date(
-                          selectedMovie?.release_date
-                        ).toLocaleDateString('en-US', dateOptions)}
-                      </p>
-                      <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 text-lg '>
-                        {selectedMovie?.overview}
-                      </p>
-                      <Link to={`/movies/${selectedMovie?.id}`}>
-                        <div className='my-4'>
-                          <button className='hover:scale-110 duration-200 border text-white border-blue-500 py-3 px-5 rounded-md'>
-                            View More
-                          </button>
-                        </div>
-                      </Link>
-                    </div>
+                <div className='w-full h-[550px] text-white mb-4 relative'>
+                  {/* DIV BELOW IS IMAGE OVERLAY TINT */}
+                  <div className='absolute w-full h-[550px] bg-gradient-to-r from-black'></div>
+                  <img
+                    className='w-full h-full object-cover'
+                    src={`https://image.tmdb.org/t/p/original/${selectedMovie?.backdrop_path}`}
+                    alt={selectedMovie?.title}
+                  />
+                  <div className='absolute bottom-0 p-4 md:p-8'>
+                    <h1
+                      className='text-3xl md:text-5xl font-bold bg-gradient-to-r bg-clip-text text-transparent 
+      from-teal-300 to-white'
+                    >
+                      {selectedMovie?.title}
+                    </h1>
+                    <p className='text-gray-300 text-lg my-2'>
+                      {new Date(selectedMovie?.release_date).toLocaleDateString(
+                        'en-US',
+                        dateOptions
+                      )}
+                    </p>
+                    <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 text-lg '>
+                      {selectedMovie?.overview}
+                    </p>
+                    <Link to={`/movies/${selectedMovie?.id}`}>
+                      <div className='my-4'>
+                        <button className='hover:scale-110 duration-200 border text-white border-blue-500 py-3 px-5 rounded-md'>
+                          View More
+                        </button>
+                      </div>
+                    </Link>
                   </div>
                 </div>
 
