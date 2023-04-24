@@ -4,22 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 export default function MovieView({ movies }) {
   const [movieData, setMovieData] = useState([]);
   const [movie, setMovie] = useState([]);
-  const { id, name } = useParams();
-
-  const fetchMovie = async (movieId) => {
-    const apiKey = '7b627fa55bf0652f8c45e9da6e8199d1';
-    const response = await fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
-    );
-    const movie = await response.json();
-    const genreNames = movie.genres.map((genre) => genre.name);
-    return {
-      id: movie.id,
-      title: movie.title,
-      description: movie.overview,
-      genres: genreNames,
-    };
-  };
+  const { id } = useParams();
 
   const dateOptions = {
     year: 'numeric',
@@ -42,7 +27,6 @@ export default function MovieView({ movies }) {
     )
       .then((response) => response.json())
       .then((res) => {
-        console.log(res);
         setMovieData(res.data);
         setMovie(res);
       })
@@ -51,43 +35,60 @@ export default function MovieView({ movies }) {
 
   return (
     <div>
-      <header
-        id='header'
-        className='mb-2 mx-5'
-      >
-        <div className='d-flex align-items-center justify-content-between'>
-          <a href='/'>
-            <img
-              className='logo'
-              src='https://media-private.canva.com/ADwn8/MAFghEADwn8/1/s.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWF6QO3UH4PAAJ6Q%2F20230421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230421T002509Z&X-Amz-Expires=19894&X-Amz-Signature=0adc59afcf6a893d961af662ee59a6c76bdf645ab228b2e553dc019090ec2b75&X-Amz-SignedHeaders=host&response-expires=Fri%2C%2021%20Apr%202023%2005%3A56%3A43%20GMT'
-              alt='logo'
-            />
-          </a>
-          <span className='p-float-label p-input-icon-left mb-3'>
-            <i className='pi pi-search' />
-          </span>
-        </div>
-      </header>
+      {/* Header */}
+
+      <div className=''>
+        <a
+          href='/'
+          className='text-decoration-none text-white'
+        >
+          <h3 className='text-white py-3 px-3'>SHMOVIE FANATICS</h3>
+        </a>
+      </div>
+
       <div className='container mt-5'>
         <div className='col-lg-12'>
           {/* <!-- Header--> */}
           <header className='mb-4'>
             {/* <!-- Movie title--> */}
-            <h1 className='fw-bolder mb-1 text-white tex'>{movie?.title}</h1>
+            <div className='d-flex justify-content-center mb-4'>
+              <a
+                href='/'
+                className='btn btn-primary rounded-full'
+              >
+                Home
+              </a>
+            </div>
+            <h1 className='fw-bolder mb-1 text-white text-center'>
+              {movie?.title}
+            </h1>
             {/* <!-- Movie release date--> */}
-            <div className='text-muted fst-italic mb-2'>
+            <div className='text-center text-muted fst-italic mb-2'>
               {new Date(movie?.release_date).toLocaleDateString(
                 'en-US',
                 dateOptions
               )}
             </div>
             {/* <!-- Movie genres--> */}
-            <a
-              className='badge bg-secondary text-decoration-none link-light'
-              href='#!'
-            >
-              {movie?.genres?.map((genre) => genre.name).join(', ')}
-            </a>
+            <div className='text-center'>
+              {' '}
+              <a href='#!'>
+                <ul>
+                  {movie?.genres?.map((genre) => (
+                    <li
+                      className='badge
+                    bg-secondary
+                    text-decoration-none
+                    link-light
+                    mx-5'
+                      key={genre.id}
+                    >
+                      {genre.name}
+                    </li>
+                  ))}
+                </ul>
+              </a>
+            </div>
           </header>
         </div>
         <div className='row'>
@@ -145,15 +146,33 @@ export default function MovieView({ movies }) {
             <div className='card mb-4'>
               <div className='card-header'>Production Info</div>
               <div className='card-body'>
-                <ul>
-                  <li>Budget: {movie?.budget}</li>
-                  <li>Revenue: {movie?.revenue}</li>
+                <ul className='p-0'>
                   <li>
-                    Production Companies:{' '}
+                    <b>Budget: </b>
+                    {movie?.budget === 0 ? (
+                      <text>Not Available</text>
+                    ) : (
+                      <text> {'$' + movie?.budget?.toLocaleString()}</text>
+                    )}
+                  </li>
+                  <li>
+                    <b>Revenue: </b>
+                    {movie?.revenue === 0 ? (
+                      <text>Not Available</text>
+                    ) : (
+                      <text> {'$' + movie?.revenue?.toLocaleString()}</text>
+                    )}
+                  </li>
+                  <li>
+                    <b>Production Companies: </b>
                     {movie?.production_companies?.[0]?.name} |{' '}
                     {movie?.production_companies?.[1]?.name}
                   </li>
-                  <li>Run Time: {convertRuntime(movie?.runtime)} minutes</li>
+                  <li>
+                    {' '}
+                    <b>Run Time: </b>
+                    {convertRuntime(movie?.runtime)}
+                  </li>
                 </ul>
               </div>
             </div>
