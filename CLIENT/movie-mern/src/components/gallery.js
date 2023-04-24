@@ -1,26 +1,16 @@
-import GalleryItem from "./galleryItem";
 import "../index.css";
+import GalleryItem from "./galleryItem";
 
-export default function Gallery({
-  setMovieClicked,
-  selectedMovie,
-  setSelectedMovie,
-  movies,
-}) {
+export default function Gallery({ movies }) {
+  /* 
+    if no item is clicked ? <GalleryItem /> : display full view of clicked item.
+    Here we will display more data, i.e., image, description, and genre.
+  */
+
   return (
     <div className="container-fluid">
       <div className="row">
-        <ul className="d-flex flex-row flex-wrap">
-          {movies.map((movie) => (
-            <GalleryItem
-              key={movie.id}
-              movie={movie}
-              setMovieClicked={setMovieClicked}
-              selectedMovie={selectedMovie}
-              setSelectedMovie={setSelectedMovie}
-            />
-          ))}
-        </ul>
+        <GalleryItem />
       </div>
     </div>
   );
