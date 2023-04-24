@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { FaStar } from 'react-icons/fa';
 
 export default function MovieView({ movies }) {
   const [movieData, setMovieData] = useState([]);
@@ -88,6 +89,23 @@ export default function MovieView({ movies }) {
                   ))}
                 </ul>
               </a>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              {movie?.vote_average !== 0 && (
+                <h2
+                  style={{
+                    color: 'gold',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <span className='p-2'>
+                    <FaStar />
+                  </span>
+                  {movie?.vote_average?.toFixed(2)}
+                </h2>
+              )}
             </div>
           </header>
         </div>
