@@ -1,14 +1,33 @@
 import React, { useContext, useState } from "react";
-import { MovieContext } from "./movieContext";
-import MovieView from "./movieView";
+import { Card, Modal } from "react-bootstrap";
+import { MovieContext } from "../context/movieContext";
 import "../index.css";
+import MovieView from "./movieView";
 
-import Card from "react-bootstrap/Card";
+export default function GalleryItem({
+  setMovieClicked,
+  selectedMovie,
+  setSelectedMovie,
+}) {
+  const { movies } = useContext(MovieContext); // handles list of movies returned from api
+  const [isExpanded, setIsExpanded] = useState(false); // displays movieView component when set true/clicked
+  const [clickedMovie, setClickedMovie] = useState(null); // stores clicked movie to display in movieView
+  const [showModal, setShowModal] = useState(false); // displays modal
 
-export default function GalleryItem() {
-  const { movies } = useContext(MovieContext);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const handleShowModal = (movie) => {
+    setClickedMovie(movie);
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setClickedMovie(null);
+    setShowModal(false);
+  };
+
+  const handleMovieClick = (movie) => {
+    setIsExpanded(!isExpanded);
+    setMovieClicked(true);
+    setSelectedMovie(movie);
+  };
 
   const dateOptions = {
     year: "numeric",
@@ -21,11 +40,11 @@ export default function GalleryItem() {
     <ul className="d-flex flex-row flex-wrap">
       {movies.map((movie) => (
         <Card
-          style={{ width: "13rem" }}
+          style={{ width: "20rem" }}
           border="secondary"
           key={movie.id}
-          className="m-2"
-          onClick={() => setSelectedMovie(movie)} // set the clicked movie as the new state value
+          className="mx-auto m-2"
+          bg="dark"
         >
           <Card.Img
             variant="top"
@@ -33,26 +52,53 @@ export default function GalleryItem() {
             alt={movie.title}
           />
           <Card.Body>
-            <Card.Title>{movie.title}</Card.Title>
+            <Card.Title className="text-white">{movie.title}</Card.Title>
             <Card.Subtitle className="text-muted mt-1">
               {new Date(movie.release_date).toLocaleDateString(
                 "en-US",
                 dateOptions
               )}
             </Card.Subtitle>
+
+            <button
+              type="button"
+              className="btn btn-secondary mt-2"
+              onClick={() => handleShowModal(movie)}
+            >
+              View More
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary mt-2"
+              onClick={() => handleMovieClick(movie)}
+            >
+              MovieView
+            </button>
           </Card.Body>
         </Card>
       ))}
     </ul>
   );
 
-  const handleClick = () => {
-    setIsExpanded(!isExpanded);
-    console.log(isExpanded);
-  };
   return (
-    <div onClick={handleClick}>
+    <div>
       {isExpanded ? <MovieView movie={selectedMovie} /> : card}
+
+      {/*if clickedMovie is true (not null) the the code after the && will be exectued.
+          the modal will render if clickMovie is true and shoModal is also true. */}
+      {clickedMovie && (
+        <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>{clickedMovie.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <img
+              src={`https://image.tmdb.org/t/p/w342/${clickedMovie.poster_path}`}
+              alt={clickedMovie.title}
+            />
+          </Modal.Body>
+        </Modal>
+      )}
     </div>
   );
 }
