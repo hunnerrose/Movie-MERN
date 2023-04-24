@@ -19,6 +19,7 @@ export default function SideBar({ query, setQuery, setMovies }) {
     const response = await fetch(`${API_URL}${API_KEY}&language=en-US&page=1`);
     const data = await response.json();
     setMovies(data.results);
+    setVisibleCustomToolbar(false);
   };
 
   // now playing api
@@ -29,6 +30,7 @@ export default function SideBar({ query, setQuery, setMovies }) {
     const response = await fetch(`${API_URL}${API_KEY}&language=en-US&page=1`);
     const data = await response.json();
     setMovies(data.results);
+    setVisibleCustomToolbar(false);
   };
 
   // upcoming api
@@ -40,6 +42,7 @@ export default function SideBar({ query, setQuery, setMovies }) {
     );
     const data = await response.json();
     setMovies(data.results);
+    setVisibleCustomToolbar(false);
   };
 
   // top rated api
@@ -52,6 +55,7 @@ export default function SideBar({ query, setQuery, setMovies }) {
     );
     const data = await response.json();
     setMovies(data.results);
+    setVisibleCustomToolbar(false);
   };
 
   return (

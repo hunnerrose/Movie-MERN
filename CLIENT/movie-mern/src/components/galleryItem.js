@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Card, Modal } from "react-bootstrap";
 import { MovieContext } from "../context/movieContext";
 import "../index.css";
-import MovieView from "./movieView";
+import MovieView from "./MovieView";
 
 export default function GalleryItem({
   setMovieClicked,

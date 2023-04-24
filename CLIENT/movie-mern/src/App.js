@@ -6,7 +6,11 @@ import SideBar from "./components/sideBar";
 import Banner from "./components/banner";
 import Footer from "./components/footer";
 import TopNav from "./components/topNav";
-// require("dotenv").config();
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+
+import MovieView from "./components/MovieView";
 
 export default function App() {
   // state variables
@@ -20,6 +24,7 @@ export default function App() {
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
   // const API_KEY = process.env.REACT_APP_API_KEY;
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
+  const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
   // default movies display api
   async function fetchFeaturedMovies() {
@@ -48,21 +53,25 @@ export default function App() {
     }
   }, [query, fetchAMovie]);
 
+  const dateOptions = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  };
+
   return (
-    <div className="App">
+    {
+      /*<div className="App">
       <MovieContext.Provider value={{ movies }}>
-        {/*SideBar*/}
         <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
 
-        {/*TopNav bar*/}
         <TopNav setQuery={setQuery} query={query} />
 
-        {/*Banner - displays Banner component until a movie is clicked.*/}
         {selectedMovie ? (
           <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
         ) : null}
 
-        {/*Gallery >> GalleryItem*/}
         <div id="gallery">
           <Gallery
             setMovieClicked={setMovieClicked}
@@ -71,9 +80,48 @@ export default function App() {
           />
         </div>
 
-        {/*Footer*/}
         <Footer />
-      </MovieContext.Provider>
-    </div>
+        </MovieContext.Provider>*/
+    },
+    (
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MovieContext.Provider value={{ movies }}>
+                  <SideBar
+                    query={query}
+                    setQuery={setQuery}
+                    setMovies={setMovies}
+                  />
+
+                  <TopNav setQuery={setQuery} query={query} />
+
+                  {selectedMovie ? (
+                    <Banner
+                      selectedMovie={selectedMovie}
+                      movieClicked={movieClicked}
+                    />
+                  ) : null}
+
+                  <div id="gallery">
+                    <Gallery
+                      setMovieClicked={setMovieClicked}
+                      selectedMovie={selectedMovie}
+                      setSelectedMovie={setSelectedMovie}
+                    />
+                  </div>
+
+                  <Footer />
+                </MovieContext.Provider>
+              }
+            />
+            <Route path={"/movies/:id"} element={<MovieView />} />
+          </Routes>
+        </Router>
+      </div>
+    )
   );
 }

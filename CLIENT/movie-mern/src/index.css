@@ -5,17 +5,19 @@
 /* sidebar */
 .sidebar {
   margin: auto auto;
+  margin-right: 9em;
 }
 .input {
   margin-left: 5px;
 }
 
 /* gallery */
-.container {
-  margin: 10em 0 0 15em;
-  height: 350px;
+.galleryContainer {
+  margin: 8em 0 0 5em;
+  height: 670px;
   /* border: solid 5px orange; */
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
 /* galleryItem */
@@ -50,4 +52,49 @@
 .movie-content-title {
   color: white;
   font-size: 6em;
+}
+
+/* footer */
+.footer {
+  text-align: center;
+  color: white;
+  min-height: 40px;
+}
+
+.logo {
+  max-width: 250px;
+  margin-bottom: 1em;
+}
+
+/* movie view */
+
+.movie-img {
+  border-radius: 10px;
+}
+
+.overview {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 8px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
