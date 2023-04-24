@@ -60,7 +60,10 @@ export default function GalleryItem() {
               )}
             </Card.Subtitle>
             <Link to={`/movies/${movie.id}`}>
-              <button className='hover:scale-110 duration-200 border text-white border-blue-500 mt-2 py-2 px-4 rounded-md'>
+              <button
+                className='hover:scale-110 duration-200 border text-white border-blue-500 mt-2 py-2 px-4 rounded-md'
+                onClick={HandleClick}
+              >
                 View More
               </button>
             </Link>
