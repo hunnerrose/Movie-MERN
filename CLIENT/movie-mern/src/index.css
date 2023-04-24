@@ -46,15 +46,18 @@
   min-height: 625px;
   background-position: top center;
   background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: 2em;
+  border-radius: 10px;
 }
 
 /* movie-content */
 .movie-content {
   max-width: 60%;
-  margin: auto auto 0;
+  padding: 2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* movie-content-title */

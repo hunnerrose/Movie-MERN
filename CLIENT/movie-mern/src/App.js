@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MovieContext } from './components/movieContext';
 import { InputText } from 'primereact/inputtext';
@@ -6,6 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import Gallery from './components/gallery';
 import SideBar from './components/sideBar';
 import MovieView from './components/MovieView';
+import { FaGithub } from 'react-icons/fa';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -15,7 +16,7 @@ function App() {
   const API_URL = 'https://api.themoviedb.org/3/search/movie?api_key=';
   const FEAT_API_URL = 'https://api.themoviedb.org/3/discover/movie?api_key=';
   const API_KEY = '7b627fa55bf0652f8c45e9da6e8199d1';
-  const BACKDROP_IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+  const BACKDROP_IMG_PATH = 'https://image.tmdb.org/t/p/original';
 
   const dateOptions = {
     year: 'numeric',
@@ -95,41 +96,60 @@ function App() {
                 </header>
 
                 {/* Banner */}
-                <div
-                  className='movie-display'
-                  style={{
-                    backgroundImage: `url(${BACKDROP_IMG_PATH}${selectedMovie?.backdrop_path})`,
-                  }}
-                >
-                  <div className='movie-content'>
-                    <h1 className='movie-content-title'>
-                      {selectedMovie?.title}
-                    </h1>
-                    <p className='text-white'>{selectedMovie?.overview}</p>
-                    <p className='text-white'>
-                      {new Date(selectedMovie?.release_date).toLocaleDateString(
-                        'en-US',
-                        dateOptions
-                      )}
-                    </p>
-                    <p className='text-white'>
-                      <i className='pi pi-star text-warning' />{' '}
-                      {selectedMovie?.vote_average}
-                    </p>
+                <div className='w-full h-[550px] text-white mb-4'>
+                  <div className='w-full h-full'>
+                    {/* DIV BELOW IS IMAGE OVERLAY TINT */}
+                    <div className='absolute w-full h-[550px]  bg-gradient-to-b from-gray-900'></div>
+                    <img
+                      className='w-full h-full object-cover rounded-[20px]'
+                      src={`https://image.tmdb.org/t/p/original/${selectedMovie?.backdrop_path}`}
+                      alt={selectedMovie?.title}
+                    />
+                    <div className='absolute w-full top-[18%] p-4 md:p-8'>
+                      <h1
+                        className='text-3xl md:text-5xl font-bold bg-gradient-to-r bg-clip-text text-transparent 
+            from-teal-300 to-white'
+                      >
+                        {selectedMovie?.title}
+                      </h1>
+                      <p className='text-gray-300 text-lg my-2'>
+                        {new Date(
+                          selectedMovie?.release_date
+                        ).toLocaleDateString('en-US', dateOptions)}
+                      </p>
+                      <p className='w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[35%] text-gray-200 text-lg '>
+                        {selectedMovie?.overview}
+                      </p>
+                      <Link to={`/movies/${selectedMovie?.id}`}>
+                        <div className='my-4'>
+                          <button className='hover:scale-110 duration-200 border text-white border-blue-500 py-3 px-5 rounded-md'>
+                            View More
+                          </button>
+                        </div>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
                 <Gallery />
 
                 {/* Footer */}
-                <div className='footer d-flex justify-content-center'>
-                  <p className='text-white'>
-                    &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
-                  </p>
-                  <p className='text-white'>
-                    <i className='pi pi-github' />
-                  </p>
-                </div>
+                <footer class='flex justify-center'>
+                  <div class='text-center py-4'>
+                    <p className='text-white'>
+                      &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
+                    </p>
+                    <a
+                      href='https://github.com/hunnerrose/Movie-MERN'
+                      class='flex items-center text-white hover:text-gray-400 focus:text-gray-400'
+                    >
+                      <FaGithub
+                        class='mx-auto'
+                        size={25}
+                      />
+                    </a>
+                  </div>
+                </footer>
               </MovieContext.Provider>
             }
           />

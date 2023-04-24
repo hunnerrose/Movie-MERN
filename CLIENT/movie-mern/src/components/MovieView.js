@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { FaGithub } from 'react-icons/fa';
 
 export default function MovieView({ movies }) {
   const [movieData, setMovieData] = useState([]);
@@ -55,16 +56,17 @@ export default function MovieView({ movies }) {
             <div className='d-flex justify-content-center mb-4'>
               <a
                 href='/'
-                className='btn btn-primary rounded-full'
+                className='hover:scale-110 duration-200 border text-white border-blue-500 mt-2 py-2 px-4 rounded-md mr-4 no-underline'
               >
                 Home
               </a>
             </div>
+
             <h1 className='fw-bolder mb-1 text-white text-center'>
               {movie?.title}
             </h1>
             {/* <!-- Movie release date--> */}
-            <div className='text-center text-muted fst-italic mb-2'>
+            <div className='text-center text-secondary fst-italic mb-2'>
               {new Date(movie?.release_date).toLocaleDateString(
                 'en-US',
                 dateOptions
@@ -284,14 +286,21 @@ export default function MovieView({ movies }) {
           </div>
         </section>
       </div>
-      <footer class='footer d-flex justify-content-center'>
-        <div>
+      {/* FOOTER */}
+      <footer class='flex justify-center'>
+        <div class='text-center py-4'>
           <p className='text-white'>
             &copy; {new Date().getFullYear()} SHMOVIE FANATICS {''}
           </p>
-          <p className='text-white'>
-            <i className='pi pi-github' />
-          </p>
+          <a
+            href='https://github.com/hunnerrose/Movie-MERN'
+            class='flex items-center text-white hover:text-gray-400 focus:text-gray-400'
+          >
+            <FaGithub
+              class='mx-auto'
+              size={25}
+            />
+          </a>
         </div>
       </footer>
     </div>
