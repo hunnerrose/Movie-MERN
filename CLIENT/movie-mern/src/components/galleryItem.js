@@ -3,25 +3,8 @@ import { Link } from "react-router-dom";
 import { MovieContext } from "../context/movieContext";
 import "../index.css";
 
-// import Card from "react-bootstrap/Card";
-
 export default function GalleryItem() {
   const { movies } = useContext(MovieContext);
-
-  /* when a gallary item is clicked on the gallery should display a 
-  full window view of the selected movie. the state should be managed here and sent to gallery.js
-  */
-
-  // This makes you scroll to the top of the path when you click on the view details button
-  // function ScrollToTopOnMount() {
-  //   const { pathname } = useLocation();
-
-  //   useEffect(() => {
-  //     window.scroll(0, 0);
-  //   }, [pathname]);
-
-  //   return null;
-  // }
 
   function HandleClick() {
     window.scroll(0, 0);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-import { FaGithub } from "react-icons/fa";
+import Footer from "./footer";
 
 export default function MovieView({ movies }) {
   // const [movieData, setMovieData] = useState([]);
@@ -286,20 +286,7 @@ export default function MovieView({ movies }) {
           </div>
         </section>
       </div>
-      {/* FOOTER */}
-      <footer class="flex justify-center">
-        <div class="text-center py-4">
-          <p className="text-white">
-            &copy; {new Date().getFullYear()} SHMOVIE FANATICS {""}
-          </p>
-          <a
-            href="https://github.com/hunnerrose/Movie-MERN"
-            class="flex items-center text-white hover:text-gray-400 focus:text-gray-400"
-          >
-            <FaGithub class="mx-auto" size={25} />
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
