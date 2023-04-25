@@ -1,33 +1,14 @@
-import React, { useContext, useState } from "react";
-import { Card, Modal } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { MovieContext } from "../context/movieContext";
 import "../index.css";
-import MovieView from "./movieView";
 
-export default function GalleryItem({
-  setMovieClicked,
-  selectedMovie,
-  setSelectedMovie,
-}) {
-  const { movies } = useContext(MovieContext); // handles list of movies returned from api
-  const [isExpanded, setIsExpanded] = useState(false); // displays movieView component when set true/clicked
-  const [clickedMovie, setClickedMovie] = useState(null); // stores clicked movie to display in movieView
-  const [showModal, setShowModal] = useState(false); // displays modal
+export default function GalleryItem() {
+  const { movies } = useContext(MovieContext);
 
-  const handleShowModal = (movie) => {
-    setClickedMovie(movie);
-    setShowModal(true);
-  };
-  const handleCloseModal = () => {
-    setClickedMovie(null);
-    setShowModal(false);
-  };
-
-  const handleMovieClick = (movie) => {
-    setIsExpanded(!isExpanded);
-    setMovieClicked(true);
-    setSelectedMovie(movie);
-  };
+  function HandleClick() {
+    window.scroll(0, 0);
+  }
 
   const dateOptions = {
     year: "numeric",
@@ -36,69 +17,36 @@ export default function GalleryItem({
     timeZone: "UTC",
   };
 
-  const card = (
-    <ul className="d-flex flex-row flex-wrap">
+  return (
+    <ul className="list-unstyled d-flex flex-wrap justify-content-center align-items-stretch">
       {movies.map((movie) => (
-        <Card
-          style={{ width: "20rem" }}
-          border="secondary"
-          key={movie.id}
-          className="mx-auto m-2"
-          bg="dark"
-        >
-          <Card.Img
-            variant="top"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <Card.Body>
-            <Card.Title className="text-white">{movie.title}</Card.Title>
-            <Card.Subtitle className="text-muted mt-1">
-              {new Date(movie.release_date).toLocaleDateString(
-                "en-US",
-                dateOptions
-              )}
-            </Card.Subtitle>
-
-            <button
-              type="button"
-              className="btn btn-secondary mt-2"
-              onClick={() => handleShowModal(movie)}
-            >
-              View More
-            </button>
-            <button
-              type="button"
-              className="btn btn-secondary mt-2"
-              onClick={() => handleMovieClick(movie)}
-            >
-              MovieView
-            </button>
-          </Card.Body>
-        </Card>
+        <div className="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-1">
+          <div className="card bg-dark text-white border-secondary d-flex flex-column h-100">
+            <img
+              className="card-img-top flex-grow-1"
+              src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`}
+              alt={movie?.title}
+            />
+            <div className="card-body text-center">
+              <h5 className="card-title text-white">{movie?.title}</h5>
+              <p className="card-text text-secondary">
+                {new Date(movie?.release_date).toLocaleDateString(
+                  "en-US",
+                  dateOptions
+                )}
+              </p>
+              <Link to={`/movies/${movie?.id}`}>
+                <button
+                  className="btn btn-outline-light mt-2"
+                  onClick={HandleClick}
+                >
+                  View More
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       ))}
     </ul>
-  );
-
-  return (
-    <div>
-      {isExpanded ? <MovieView movie={selectedMovie} /> : card}
-
-      {/*if clickedMovie is true (not null) the the code after the && will be exectued.
-          the modal will render if clickMovie is true and shoModal is also true. */}
-      {clickedMovie && (
-        <Modal show={showModal} onHide={handleCloseModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>{clickedMovie.title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <img
-              src={`https://image.tmdb.org/t/p/w342/${clickedMovie.poster_path}`}
-              alt={clickedMovie.title}
-            />
-          </Modal.Body>
-        </Modal>
-      )}
-    </div>
   );
 }

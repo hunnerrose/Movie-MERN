@@ -1,25 +1,22 @@
 import React from "react";
-import { InputText } from "primereact/inputtext";
+import logo from "../img/Shmovie.png";
 
 export default function TopNav({ query, setQuery }) {
   return (
     <header id="header" className="mb-2 mx-5">
-      <div className="d-flex align-items-center justify-content-between">
-        <a href="/">
-          <img
-            className="logo"
-            src="https://media-private.canva.com/ADwn8/MAFghEADwn8/1/s.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJWF6QO3UH4PAAJ6Q%2F20230421%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230421T002509Z&X-Amz-Expires=19894&X-Amz-Signature=0adc59afcf6a893d961af662ee59a6c76bdf645ab228b2e553dc019090ec2b75&X-Amz-SignedHeaders=host&response-expires=Fri%2C%2021%20Apr%202023%2005%3A56%3A43%20GMT"
-            alt="logo"
-          />
+      <div class="flex items-center justify-between">
+        <a href="/" className="text-white no-underline">
+          {/*<h3 className="text-white">SHMOVIE FANATICS</h3>*/}
+          <img src={logo} alt="SHMOVIE FANATICS" />
         </a>
-        <span className="p-float-label p-input-icon-left mb-3">
-          <i className="pi pi-search" />
-          <InputText
-            id="lefticon"
+        <span>
+          <input
+            type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search..."
+            className="w-48 h-12 rounded-full mr-5 mb-3 p-4 bg-transparent outline-none transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110 border-2 border-blue-500 focus:text-gray-400 focus:-translate-y-1 focus:scale-110 focus:border-blue-500 text-white"
           />
-          <label htmlFor="lefticon">Search for a movie</label>
         </span>
       </div>
     </header>
