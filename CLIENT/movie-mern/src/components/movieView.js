@@ -39,12 +39,15 @@ export default function MovieView({ movies }) {
     <div>
       {/* Header */}
 
-      <div className=''>
+      <div className='p-4'>
         <a
           href='/'
-          className='text-decoration-none text-white'
+          class='text-white no-underline'
         >
-          <h3 className='text-white py-3 px-3'>SHMOVIE FANATICS</h3>
+          <h3 class='rounded-full bg-black px-3 w-[300px]'>
+            <span class='text-gray-500'>SHMOVIE </span>{' '}
+            <span class='text-white z-10'>FANATICS</span>
+          </h3>
         </a>
       </div>
 
