@@ -1,27 +1,25 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { MovieContext } from "./context/movieContext";
+// import logo from "./img/Shmovie.png";
 
 import Gallery from "./components/gallery";
-import SideBar from "./components/SideBar";
-import Banner from "./components/banner";
+import SideBar from "./components/sideBar";
+import MovieView from "./components/movieView";
 import Footer from "./components/footer";
+import Banner from "./components/banner";
 import TopNav from "./components/topNav";
-// require("dotenv").config();
 
 export default function App() {
   // state variables
   const [query, setQuery] = useState(""); // handles search input
-  const [movies, setMovies] = useState([]); // handles galleryitem display
+  const [movies, setMovies] = useState([]); // handles list of movies returned from api
   const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
-  const [movieClicked, setMovieClicked] = useState(false); // handles banner display on click
 
-  // api variables
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
-  // const API_KEY = process.env.REACT_APP_API_KEY;
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
 
-  // default movies display api
   async function fetchFeaturedMovies() {
     const response = await fetch(
       `${FEAT_API_URL}${API_KEY}&sort_by=popularity.desc`
@@ -32,7 +30,6 @@ export default function App() {
     setSelectedMovie(data.results[randomIndex]);
   }
 
-  // movies by search api
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
     const data = await response.json();
@@ -50,30 +47,31 @@ export default function App() {
 
   return (
     <div className="App">
-      <MovieContext.Provider value={{ movies }}>
-        {/*SideBar*/}
-        <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MovieContext.Provider value={{ movies }}>
+                <SideBar
+                  query={query}
+                  setQuery={setQuery}
+                  setMovies={setMovies}
+                />
 
-        {/*TopNav bar*/}
-        <TopNav setQuery={setQuery} query={query} />
+                <TopNav query={query} setQuery={setQuery} />
 
-        {/*Banner - displays Banner component until a movie is clicked.*/}
-        {selectedMovie ? (
-          <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
-        ) : null}
+                <Banner selectedMovie={selectedMovie} />
 
-        {/*Gallery >> GalleryItem*/}
-        <div id="gallery">
-          <Gallery
-            setMovieClicked={setMovieClicked}
-            selectedMovie={selectedMovie}
-            setSelectedMovie={setSelectedMovie}
+                <Gallery />
+
+                <Footer />
+              </MovieContext.Provider>
+            }
           />
-        </div>
-
-        {/*Footer*/}
-        <Footer />
-      </MovieContext.Provider>
+          <Route path={"/movies/:id"} element={<MovieView />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

@@ -1,22 +1,12 @@
-import GalleryItem from "./galleryItem";
 import "../index.css";
+import GalleryItem from "./galleryItem";
 
-export default function Gallery({
-  setMovieClicked,
-  selectedMovie,
-  setSelectedMovie,
-}) {
+export default function Gallery() {
   return (
     <div className="container-fluid">
       <div className="row">
-        <GalleryItem
-          setMovieClicked={setMovieClicked}
-          selectedMovie={selectedMovie}
-          setSelectedMovie={setSelectedMovie}
-        />
+        <GalleryItem />
       </div>
     </div>
   );
 }
-
-

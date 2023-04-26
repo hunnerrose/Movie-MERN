@@ -1,12 +1,19 @@
+import { FaGithub } from "react-icons/fa";
+
 export default function Footer() {
   return (
-    <div className="footer d-flex justify-content-center align-items-center">
-      <p className="text-white mx-2">
-        &copy; {new Date().getFullYear()} SHMOVIE FANATICS
-      </p>
-      <p className="text-white mx-2">
-        <i className="pi pi-github" />
-      </p>
-    </div>
+    <footer class="flex justify-center">
+      <div class="text-center py-4">
+        <p className="text-white">
+          &copy; {new Date().getFullYear()} SHMOVIE FANATICS {""}
+        </p>
+        <a
+          href="https://github.com/hunnerrose/Movie-MERN"
+          class="flex items-center text-white hover:text-gray-400 focus:text-gray-400"
+        >
+          <FaGithub class="mx-auto" size={25} />
+        </a>
+      </div>
+    </footer>
   );
 }
