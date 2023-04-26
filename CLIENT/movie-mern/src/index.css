@@ -1,24 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap%22");
+
 .App {
   background-color: #243b55;
+  font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* sidebar */
 .sidebar {
   margin: auto auto;
+  margin-right: 9em;
 }
 .input {
   margin-left: 5px;
 }
 
-/* gallery */
-.container {
-  margin: 10em 0 0 15em;
-  height: 350px;
-  /* border: solid 5px orange; */
+/* gallery  */
+.galleryContainer {
+  margin: 8em 0 0 5em;
+  height: 670px;
+  /* border: solid 5px orange;  */
   border-radius: 5px;
+  overflow-y: scroll;
 }
 
-/* galleryItem */
+/* gallery item */
 .galleryItem {
   display: flex;
   flex-direction: row;
@@ -35,19 +44,72 @@
   min-height: 625px;
   background-position: top center;
   background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: 2em;
+  border-radius: 10px;
 }
 
 /* movie-content */
 .movie-content {
   max-width: 60%;
-  margin: auto auto 0;
+  padding: 2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* movie-content-title */
+
 .movie-content-title {
   color: white;
   font-size: 6em;
+}
+
+
+.footer {
+  text-align: center;
+  color: white;
+  min-height: 40px;
+}
+
+.logo {
+  max-width: 250px;
+  margin-bottom: 1em;
+}
+
+
+
+.movie-img {
+  border-radius: 10px;
+}
+
+.overview {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 8px;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+.card-img-top {
+  object-fit: cover;
 }
