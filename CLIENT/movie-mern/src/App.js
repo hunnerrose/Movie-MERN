@@ -5,7 +5,7 @@ import { MovieContext } from "./context/movieContext";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
-import MovieView from "./components/movieView";
+import MovieView from "./components/MovieView";
 import Footer from "./components/footer";
 import Banner from "./components/banner";
 import TopNav from "./components/topNav";
