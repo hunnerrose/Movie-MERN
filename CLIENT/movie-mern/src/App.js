@@ -5,15 +5,16 @@ import { MovieContext } from "./context/movieContext";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
-import MovieView from "./components/MovieView";
+import MovieView from "./components/movieView";
 import Footer from "./components/footer";
 import Banner from "./components/banner";
 import TopNav from "./components/topNav";
 
-function App() {
-  const [query, setQuery] = useState("");
-  const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState([]);
+export default function App() {
+  // state variables
+  const [query, setQuery] = useState(""); // handles search input
+  const [movies, setMovies] = useState([]); // handles list of movies returned from api
+  const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
 
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
@@ -74,5 +75,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
