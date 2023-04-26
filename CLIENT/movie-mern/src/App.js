@@ -1,32 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { MovieContext } from "./context/movieContext";
+// import logo from "./img/Shmovie.png";
 
 import Gallery from "./components/gallery";
 import SideBar from "./components/sideBar";
-import Banner from "./components/banner";
+import MovieView from "./components/movieView";
 import Footer from "./components/footer";
+import Banner from "./components/banner";
 import TopNav from "./components/topNav";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
-
-import MovieView from "./components/MovieView";
 
 export default function App() {
   // state variables
   const [query, setQuery] = useState(""); // handles search input
   const [movies, setMovies] = useState([]); // handles list of movies returned from api
   const [selectedMovie, setSelectedMovie] = useState([]); // handles banner display
-  const [movieClicked, setMovieClicked] = useState(false); // handles banner display on click
 
-  // api variables
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
-  // const API_KEY = process.env.REACT_APP_API_KEY;
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
   const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
-  // default movies display api
   async function fetchFeaturedMovies() {
     const response = await fetch(
       `${FEAT_API_URL}${API_KEY}&sort_by=popularity.desc`
@@ -37,7 +31,6 @@ export default function App() {
     setSelectedMovie(data.results[randomIndex]);
   }
 
-  // movies by search api
   const fetchAMovie = useCallback(async () => {
     const response = await fetch(`${API_URL}${API_KEY}&query=${query}`);
     const data = await response.json();
@@ -61,6 +54,7 @@ export default function App() {
   };
 
   return (
+<<<<<<< HEAD
     {
       /*<div className="App">
       <MovieContext.Provider value={{ movies }}>
@@ -123,5 +117,34 @@ export default function App() {
         </Router>
       </div>
     )
+=======
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <MovieContext.Provider value={{ movies }}>
+                <SideBar
+                  query={query}
+                  setQuery={setQuery}
+                  setMovies={setMovies}
+                />
+
+                <TopNav query={query} setQuery={setQuery} />
+
+                <Banner selectedMovie={selectedMovie} />
+
+                <Gallery />
+
+                <Footer />
+              </MovieContext.Provider>
+            }
+          />
+          <Route path={"/movies/:id"} element={<MovieView />} />
+        </Routes>
+      </Router>
+    </div>
+>>>>>>> origin/main
   );
 }
