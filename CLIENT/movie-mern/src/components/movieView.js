@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import Footer from "./footer";
+import Comments from "./comments";
 
 export default function MovieView({ movies }) {
-  // const [movieData, setMovieData] = useState([]);
   const [movie, setMovie] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [newComment, setNewComment] = useState("");
   const { id } = useParams();
 
   const dateOptions = {
@@ -29,7 +31,6 @@ export default function MovieView({ movies }) {
     )
       .then((response) => response.json())
       .then((res) => {
-        // setMovieData(res.data);
         setMovie(res);
       })
       .catch((err) => console.log(err));
@@ -205,86 +206,13 @@ export default function MovieView({ movies }) {
             </div>
           </div>
         </div>
-        {/* <!-- Comments section--> */}
-        <section className="mb-5 col-lg-12">
-          <div className="card bg-light">
-            <div className="card-body">
-              {/* <!-- Comment form--> */}
-              <form className="mb-4">
-                <textarea
-                  className="form-control"
-                  rows="3"
-                  placeholder="Join the discussion and leave a comment!"
-                ></textarea>
-              </form>
-              {/* <!-- Comment with nested comments--> */}
-              <div className="d-flex mb-4">
-                {/* <!-- Parent comment--> */}
-                <div className="flex-shrink-0">
-                  <img
-                    className="rounded-circle"
-                    src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className="ms-3">
-                  <div className="fw-bold">Commenter Name</div>
-                  If you're going to lead a space frontier, it has to be
-                  government; it'll never be private enterprise. Because the
-                  space frontier is dangerous, and it's expensive, and it has
-                  unquantified risks.
-                  {/* <!-- Child comment 1--> */}
-                  <div className="d-flex mt-4">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="rounded-circle"
-                        src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                        alt="..."
-                      />
-                    </div>
-                    <div className="ms-3">
-                      <div className="fw-bold">Commenter Name</div>
-                      And under those conditions, you cannot establish a
-                      capital-market evaluation of that enterprise. You can't
-                      get investors.
-                    </div>
-                  </div>
-                  {/* <!-- Child comment 2--> */}
-                  <div className="d-flex mt-4">
-                    <div className="flex-shrink-0">
-                      <img
-                        className="rounded-circle"
-                        src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                        alt="..."
-                      />
-                    </div>
-                    <div className="ms-3">
-                      <div className="fw-bold">Commenter Name</div>
-                      When you put money directly to a problem, it makes a good
-                      headline.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* <!-- Single comment--> */}
-              <div className="d-flex">
-                <div className="flex-shrink-0">
-                  <img
-                    className="rounded-circle"
-                    src="https://dummyimage.com/50x50/ced4da/6c757d.jpg"
-                    alt="..."
-                  />
-                </div>
-                <div className="ms-3">
-                  <div className="fw-bold">Commenter Name</div>
-                  When I look at the universe and all the ways the universe
-                  wants to kill us, I find it hard to reconcile that with
-                  statements of beneficence.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <Comments
+          setNewComment={setNewComment}
+          setComment={setComment}
+          newComment={newComment}
+          comment={comment}
+        />
       </div>
       <Footer />
     </div>
