@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import Footer from './footer';
+=======
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import Footer from "./footer";
+import Comments from "./comments";
+>>>>>>> origin/mig_app
 
 export default function MovieView({ movies }) {
-  // const [movieData, setMovieData] = useState([]);
   const [movie, setMovie] = useState([]);
+  const [comment, setComment] = useState([]);
+  const [newComment, setNewComment] = useState("");
   const { id } = useParams();
 
   const dateOptions = {
@@ -29,7 +38,6 @@ export default function MovieView({ movies }) {
     )
       .then((response) => response.json())
       .then((res) => {
-        // setMovieData(res.data);
         setMovie(res);
       })
       .catch((err) => console.log(err));
@@ -226,6 +234,7 @@ export default function MovieView({ movies }) {
             </div>
           </div>
         </div>
+<<<<<<< HEAD
         {/* <!-- Comments section--> */}
         <section className='mb-3 col-lg-12'>
           <div className='card bg-light'>
@@ -306,6 +315,15 @@ export default function MovieView({ movies }) {
             </div>
           </div>
         </section>
+=======
+
+        <Comments
+          setNewComment={setNewComment}
+          setComment={setComment}
+          newComment={newComment}
+          comment={comment}
+        />
+>>>>>>> origin/mig_app
       </div>
       <Footer />
     </div>

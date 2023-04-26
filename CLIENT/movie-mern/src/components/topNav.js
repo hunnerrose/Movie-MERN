@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import logo from '../img/Shmovie.png';
 
@@ -17,6 +18,22 @@ export default function TopNav({ query, setQuery }) {
             <span class='text-white z-10'>FANATICS</span>
           </h3>
         </a>
+=======
+import React from "react";
+import logo from "../img/Shmovie.png";
+import "../index.css";
+
+export default function TopNav({ query, setQuery }) {
+  return (
+    <header id="header" className="mb-2 mx-5">
+      <div class="flex items-center justify-between">
+        <div className="image-container">
+          <a href="/" className="text-white no-underline">
+            {/*<h3 className="text-white">SHMOVIE FANATICS</h3>*/}
+            <img src={logo} alt="SHMOVIE FANATICS" className="image" />
+          </a>
+        </div>
+>>>>>>> origin/mig_app
         <span>
           <input
             type='text'
