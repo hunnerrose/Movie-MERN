@@ -19,7 +19,7 @@ export default function App() {
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
-  const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
+  // const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
   async function fetchFeaturedMovies() {
     const response = await fetch(
@@ -46,78 +46,7 @@ export default function App() {
     }
   }, [query, fetchAMovie]);
 
-  const dateOptions = {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  };
-
   return (
-<<<<<<< HEAD
-    {
-      /*<div className="App">
-      <MovieContext.Provider value={{ movies }}>
-        <SideBar query={query} setQuery={setQuery} setMovies={setMovies} />
-
-        <TopNav setQuery={setQuery} query={query} />
-
-        {selectedMovie ? (
-          <Banner selectedMovie={selectedMovie} movieClicked={movieClicked} />
-        ) : null}
-
-        <div id="gallery">
-          <Gallery
-            setMovieClicked={setMovieClicked}
-            selectedMovie={selectedMovie}
-            setSelectedMovie={setSelectedMovie}
-          />
-        </div>
-
-        <Footer />
-        </MovieContext.Provider>*/
-    },
-    (
-      <div className="App">
-        <Router>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MovieContext.Provider value={{ movies }}>
-                  <SideBar
-                    query={query}
-                    setQuery={setQuery}
-                    setMovies={setMovies}
-                  />
-
-                  <TopNav setQuery={setQuery} query={query} />
-
-                  {selectedMovie ? (
-                    <Banner
-                      selectedMovie={selectedMovie}
-                      movieClicked={movieClicked}
-                    />
-                  ) : null}
-
-                  <div id="gallery">
-                    <Gallery
-                      setMovieClicked={setMovieClicked}
-                      selectedMovie={selectedMovie}
-                      setSelectedMovie={setSelectedMovie}
-                    />
-                  </div>
-
-                  <Footer />
-                </MovieContext.Provider>
-              }
-            />
-            <Route path={"/movies/:id"} element={<MovieView />} />
-          </Routes>
-        </Router>
-      </div>
-    )
-=======
     <div className="App">
       <Router>
         <Routes>
@@ -145,6 +74,5 @@ export default function App() {
         </Routes>
       </Router>
     </div>
->>>>>>> origin/main
   );
 }
