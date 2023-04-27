@@ -34,6 +34,7 @@ export default function CommentSection() {
 
     // Update state to remove deleted comment
     const newComments = [...comments];
+    // delete by (index, how many elements)
     newComments.splice(index, 1);
     console.log("comments after delete:", newComments);
     setComments(newComments);
