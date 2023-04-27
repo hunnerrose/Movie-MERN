@@ -12,6 +12,8 @@ comments.get("/", async (req, res) => {
   }
 });
 
+
+
 comments.post("/", async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -24,6 +26,20 @@ comments.post("/", async (req, res) => {
     console.log(err);
   }
 });
+
+// comments.post("/", async (req, res) => {
+//   try {
+//     const newComment = await Comment.create({
+//       name: req.body.name,
+//       text: req.body.text,
+//       movie_id: req.body.movie_id // add movie_id property
+//     });
+//     res.status(201).json(newComment);
+//   } catch (err) {
+//     res.status(500).send("Server error");
+//     console.log(err);
+//   }
+// });
 
 comments.delete("/:comment_id", async (req, res) => {
   try {

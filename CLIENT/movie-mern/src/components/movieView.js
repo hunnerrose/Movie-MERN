@@ -9,7 +9,7 @@ import MovieOverView from "./movieOverview";
 import MovieViewPoster from "./movieViewPoster";
 import HeaderGenre from "./headerGenre";
 
-export default function MovieView({ movies }) {
+export default function MovieView() {
   const [movie, setMovie] = useState([]);
   const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -32,6 +32,14 @@ export default function MovieView({ movies }) {
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  // useEffect(() => {
+  //   if (movie && movie.id) {
+  //     setCommentById(movie.id);
+  //   }
+  // }, [movie]);
+
+
 
   return (
     <div>

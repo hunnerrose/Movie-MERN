@@ -8,6 +8,7 @@ export default function CommentSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     // Make POST request to create new comment
     await axios.post("http://localhost:4005/api/comments/", newComment);
 
@@ -19,6 +20,9 @@ export default function CommentSection() {
     setComments(response.data);
   };
 
+
+
+  
   const handleDelete = async (id, index) => {
     console.log("id:", id);
     console.log("comments before delete:", comments);
@@ -47,6 +51,7 @@ export default function CommentSection() {
     };
     fetchData();
   }, []);
+
 
   return (
     <div className="card bg-light">

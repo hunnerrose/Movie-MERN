@@ -20,7 +20,7 @@ export default function GalleryItem() {
   return (
     <ul className="list-unstyled d-flex flex-wrap justify-content-center align-items-stretch">
       {movies.map((movie) => (
-        <div className="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-1">
+        <div key={movie.id} className="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 p-1">
           <div className="card bg-dark text-white border-secondary d-flex flex-column h-100">
             <img
               className="card-img-top flex-grow-1"
