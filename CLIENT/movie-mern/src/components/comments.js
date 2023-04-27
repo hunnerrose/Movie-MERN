@@ -98,8 +98,8 @@ export default function CommentSection() {
             />
             </div>*/}
 
-          <div className="ms-3">
-            <ul>
+          <div className="">
+            <ul className="comment-container">
               {comments.map((comment, index) => (
                 <li key={index}>
                   <div>
@@ -107,9 +107,10 @@ export default function CommentSection() {
                   </div>
                   <div>{comment.text}</div>
                   <button
+                    className="delete-todo"
                     onClick={handleDelete.bind(this, comment.comment_id, index)}
                   >
-                    Delete Comment
+                    x
                   </button>
                 </li>
               ))}

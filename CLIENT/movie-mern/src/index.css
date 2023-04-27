@@ -119,3 +119,15 @@
 .card-img-top {
   object-fit: cover;
 }
+.comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-todo {
+  width: 24px;
+  height: 24px;
+  color: var(--light);
+  background-color: red;
+  border-radius: 50%;
+}
