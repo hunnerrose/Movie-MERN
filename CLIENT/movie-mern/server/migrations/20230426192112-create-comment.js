@@ -1,33 +1,25 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('comments', {
+    await queryInterface.createTable("comments", {
       comment_id: {
-        primaryKey: true,
+        allowNull: false,
         autoIncrement: true,
-        allowNull: false,
+        primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      content: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      author: {
+      text: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      likes: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-      },
-      dislikes: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('comments');
+    await queryInterface.dropTable("comments");
   },
 };

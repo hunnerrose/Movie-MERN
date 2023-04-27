@@ -19,6 +19,7 @@ export default function App() {
   const API_URL = "https://api.themoviedb.org/3/search/movie?api_key=";
   const FEAT_API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
   const API_KEY = "7b627fa55bf0652f8c45e9da6e8199d1";
+  // const BACKDROP_IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
   async function fetchFeaturedMovies() {
     const response = await fetch(
