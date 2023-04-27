@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import Footer from "./footer";
 import Comments from "./comments";
+=======
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
+import Footer from "./footer";
+import Comments from "./comments";
+>>>>>>> origin/mig_app
 
 export default function MovieView({ movies }) {
   const [movie, setMovie] = useState([]);
