@@ -5,6 +5,7 @@ export default function CommentSection() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({ name: "", text: "" });
 
+  // handle submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
 
