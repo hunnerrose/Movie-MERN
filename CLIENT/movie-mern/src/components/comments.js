@@ -101,7 +101,7 @@ export default function CommentSection() {
           <div className="">
             <ul className="comment-container">
               {comments.map((comment, index) => (
-                <li key={index}>
+                <li className="comment-items" key={index}>
                   <div>
                     <strong>{comment.name}</strong>
                   </div>
