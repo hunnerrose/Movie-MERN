@@ -8,6 +8,7 @@ export default function CommentSection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     // Make POST request to create new comment
     await axios.post("http://localhost:4005/api/comments/", newComment);
 
@@ -19,6 +20,9 @@ export default function CommentSection() {
     setComments(response.data);
   };
 
+
+
+  
   const handleDelete = async (id, index) => {
     console.log("id:", id);
     console.log("comments before delete:", comments);
@@ -34,6 +38,7 @@ export default function CommentSection() {
 
     // Update state to remove deleted comment
     const newComments = [...comments];
+    // delete by (index, how many elements)
     newComments.splice(index, 1);
     console.log("comments after delete:", newComments);
     setComments(newComments);
@@ -46,6 +51,7 @@ export default function CommentSection() {
     };
     fetchData();
   }, []);
+
 
   return (
     <div className="card bg-light">
@@ -97,18 +103,19 @@ export default function CommentSection() {
             />
             </div>*/}
 
-          <div className="ms-3">
-            <ul>
+          <div className="">
+            <ul className="comment-container">
               {comments.map((comment, index) => (
-                <li key={index}>
+                <li className="comment-items" key={index}>
                   <div>
                     <strong>{comment.name}</strong>
                   </div>
                   <div>{comment.text}</div>
                   <button
+                    className="delete-todo"
                     onClick={handleDelete.bind(this, comment.comment_id, index)}
                   >
-                    Delete Comment
+                    x
                   </button>
                 </li>
               ))}

@@ -8,7 +8,7 @@ export default function TopNav({ query, setQuery }) {
       <div class="flex items-center justify-between">
         <div className="image-container">
           <a href="/" className="text-white no-underline">
-            {/*<h3 className="text-white">SHMOVIE FANATICS</h3>*/}
+            {/*<h3 className="logo-header">SHMOVIE FANATICS</h3>*/}
             <img src={logo} alt="SHMOVIE FANATICS" className="image" />
           </a>
         </div>

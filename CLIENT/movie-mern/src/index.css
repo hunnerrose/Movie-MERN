@@ -75,7 +75,13 @@
   max-width: 250px;
   margin-bottom: 1em;
 }
-
+.logo-header {
+  /* background: linear-gradient(#e66465, #9198e5); */
+  font-size: 72px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /* movie view */
 
 .movie-img {
@@ -112,4 +118,16 @@
 /* card styling */
 .card-img-top {
   object-fit: cover;
+}
+.comment-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-todo {
+  width: 24px;
+  height: 24px;
+  color: var(--light);
+  background-color: red;
+  border-radius: 50%;
 }
