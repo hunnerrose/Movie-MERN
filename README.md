@@ -8,28 +8,39 @@ A movie library app that allows users to search and discover all different types
 
 1. Users can search specific movie titles or they can browse by genre. 
 2. Users can leave reviews/ratings on specific movies. 
-3. Users can watch movie trailers. 
-4. Users can create & have their own profiles where they save their favorite movies. 
-5. Users prompted by movie-related voting polls upon opening the app. 
-6. Users can comment on other user's comments, creating threads on movie reviews.
-7. Like/dislike feature for comments.
-8. Views for specific movies and actors. 
+3. Views for specific movies.
 
 ## App Description
 
-On the main home page, there will be a navbar, gallery and sidebar. By default, the gallery will display new/upcoming movie images, titles and release year. The navbar has a Home button that shows on all views. The sidebar has a seachbox where users can search different movie titles. 
+On the main home page, there is a navbar, sidebar, and gallery with gallery items. By default, the gallery displays new/upcoming movie images, titles and release year. The navbar has the logo is on each view. The sidebar has a seachbox where users can search different movie titles and as they search, the gallery items update accordingly. Additionally, in the sidebar there's a button for 'Popular Movies', 'Now Playing', 'Upcoming', and 'Top Rated'. There's a banner at the top which displays the first movie/search item. The banner & gallery items each have a view more section which upon clicking, brings users to the MovieView component displaying more details & info about the movie. At the bottom, there's a comment section that allows users to input their name and leave a comment/review on the movie.
 
-Upon hovering over a gallery item, that specific movie item will expand and display a larger movie image, the movie name, release year, genre & average rating. 
+## Backend
+This app uses SupaBase. 
 
-Upon clicking on said movie, a movie view/component pops up displaying more details info about the movie. 
+## Components
 
-## Components and State Management
+- Banner
+- Comments
+- Footer
+- Gallery
+- Gallery Item
+- Genre
+- Header/Genre
+- Movie Overview
+- Movie View
+- NavBar
+- Production Info
+- Search Bar
+- Side Bar
+- TopNav
 
-- NavBar: 
-- SideBar: manage state at app level; holds searchbar and state changes based on what's input in searchbar
-- Gallery: Displays gallery item; static
-- Gallery Item: when data's input in the searchbar, the GalleryItems change accordingly. 
-- Movie: This component is displayed once a GalleryItem is clicked. 
-- Review/Ratings
-- Actor
-- About 
+
+## Challenges
+- We didn't have time to implement the update portion on the comments; currently they only have the Create, Read and Delete functions. 
+
+## Future Features
+1. Users can watch movie trailers. 
+2. Users can create & have their own profiles where they save their favorite movies. 
+3. Users prompted by movie-related voting polls upon opening the app. 
+4. Users can comment on other user's comments, creating threads on movie reviews.
+5. Like/dislike feature for comments.
