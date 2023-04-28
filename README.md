@@ -12,7 +12,7 @@ A movie library app that allows users to search and discover all different types
 
 ## App Description
 
-On the main home page, there is a navbar, sidebar, and gallery with gallery items. By default, the gallery displays new/upcoming movie images, titles and release year. The navbar has the logo is on each view. The sidebar has a seachbox where users can search different movie titles and as they search, the gallery items update accordingly. Additionally, in the sidebar there's a button for 'Popular Movies', 'Now Playing', 'Upcoming', and 'Top Rated'. There's a banner at the top which displays the first movie/search item. The banner & gallery items each have a view more section which upon clicking, brings users to the MovieView component displaying more details & info about the movie. At the bottom, there's a comment section that allows users to input their name and leave a comment/review on the movie.
+On the main home page, there is a navbar, sidebar, and gallery with gallery items. By default, the gallery displays popular movie images, titles and release year. The navbar has the logo is on each view. The sidebar has a seachbox where users can search different movie titles and as they search, the gallery items update accordingly. Additionally, in the sidebar there's a button for 'Popular Movies', 'Now Playing', 'Upcoming', and 'Top Rated'. There's a banner at the top which displays the first movie/search item. The banner & gallery items each have a view more section which upon clicking, brings users to the MovieView component displaying more details & info about the movie. At the bottom, there's a comment section that allows users to input their name and leave a comment/review on the movie.
 
 ## Backend
 This app uses SupaBase. 
